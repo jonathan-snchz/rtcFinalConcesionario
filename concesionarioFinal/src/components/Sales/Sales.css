@@ -1,0 +1,383 @@
+/* Sales Container */
+.salesContainer {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.salesHeader {
+  margin-bottom: 2rem;
+}
+
+.salesHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* Sales List */
+.salesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.saleItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.saleItem:hover {
+  background: var(--light);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.saleInfo {
+  flex: 1;
+}
+
+.saleInfo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.saleInfo p {
+  margin: 0.25rem 0;
+  color: var(--textMuted);
+  font-size: 0.9rem;
+}
+
+.saleId {
+  font-weight: bold;
+  color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--light);
+  font-size: 0.85rem;
+}
+
+.paymentBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* Add Sale Item */
+.addSaleItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--light);
+  border: 2px dashed var(--borderColor);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--textMuted);
+  transition: var(--transition);
+}
+
+.addSaleItem:hover {
+  background: var(--light);
+  border-color: var(--secondary);
+  color: var(--textColor);
+}
+
+.addSaleIcon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+/* Sale Detail Page */
+.saleDetailContainer {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.saleDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.saleDetailHeader h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.saleActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.saleDetailContent {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.saleDetailInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Previews */
+.carPreview,
+.clientPreview {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  margin-bottom: 1rem;
+}
+
+.carPreview h4,
+.clientPreview h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+
+.carPreview p,
+.clientPreview p {
+  margin: 0.25rem 0;
+  color: var(--textMuted);
+  font-size: 0.9rem;
+}
+
+/* Badges */
+.saleAvailabilityBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.saleAvailability-disponible {
+  background: var(--successLight);
+  color: var(--successDark);
+}
+
+.saleAvailability-vendido {
+  background: var(--dangerLight);
+  color: var(--dangerDark);
+}
+
+.saleAvailability-reservado {
+  background: var(--warningLight);
+  color: var(--warningDark);
+}
+
+/* Preselected car info */
+.preselectedCarInfo {
+  background-color: var(--light);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--borderColor);
+  grid-column: 1 / -1;
+}
+
+.preselectedCarInfo h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.preselectedCarInfo p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.preselectedNote {
+  color: var(--textMuted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Form container */
+.saleFormContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.saleForm {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.formSection {
+  margin-bottom: 2rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formHelpText {
+  color: var(--textMuted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.carInfoText {
+  color: var(--textMuted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.errorMessage {
+  color: var(--danger);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+/* Form actions */
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* No results */
+.noResults {
+  text-align: center;
+  padding: 2rem;
+  color: var(--textMuted);
+}
+
+/* Loading and error */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--textMuted);
+}
+
+.notFound {
+  text-align: center;
+  padding: 3rem;
+  color: var(--textMuted);
+}
+
+/* Links */
+.backLink {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* Delete confirmation */
+.deleteConfirm {
+  text-align: center;
+}
+
+.deletePreview {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+.warning {
+  color: var(--danger);
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .salesContainer,
+  .saleDetailContainer,
+  .saleFormContainer {
+    padding: 1rem;
+  }
+  
+  .saleDetailContent,
+  .saleForm {
+    padding: 1rem;
+  }
+  
+  .saleDetailInfo {
+    grid-template-columns: 1fr;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .saleItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .saleDetailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .saleActions {
+    width: 100%;
+  }
+}

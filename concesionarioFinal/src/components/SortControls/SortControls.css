@@ -1,0 +1,28 @@
+.sortControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.sortLabel {
+  font-weight: bold;
+  color: var(--dark);
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.sortButton {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.sortButton:hover {
+  background: var(--light);
+}

@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar a {
+  color: var(--textMuted);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.navbar a:hover {
+  background: var(--light);
+  color: var(--primary);
+}
+
+.navbar a.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* Reactive */
+@media (max-width: 800px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .navbar a {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}

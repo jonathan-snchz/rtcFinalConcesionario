@@ -1,0 +1,171 @@
+.homeContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.homeHero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.homeHero h1 {
+  font-size: 3rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.homeSubtitle {
+  font-size: 1.2rem;
+  color: var(--textMuted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Dashboard */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.dashboardCard {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+  border: 1px solid var(--borderColor);
+}
+
+.dashboardCard h3 {
+  color: var(--primary);
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.dashboardCard p {
+  color: var(--textMuted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.dashboardLink {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dashboardLink:hover {
+  text-decoration: underline;
+}
+
+.quickActions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quickActions li {
+  margin-bottom: 0.75rem;
+}
+
+.quickActions a {
+  color: var(--textColor);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.quickActions a:hover {
+  background: var(--light);
+  color: var(--primary);
+}
+
+/* Login prompt */
+.loginPrompt {
+  max-width: 500px;
+  margin: 2rem auto 3rem;
+}
+
+.loginCard {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+  border: 1px solid var(--borderColor);
+  text-align: center;
+}
+
+.loginCard h3 {
+  color: var(--dark);
+  margin: 0 0 1rem 0;
+}
+
+.loginCard p {
+  color: var(--textMuted);
+  margin-bottom: 1.5rem;
+}
+
+.loginActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.loginButton {
+  padding: 0.75rem 2rem;
+  background: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+  background: var(--primary-dark);
+}
+
+.homeButton {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.homeButton:hover {
+  background: var(--primary-dark);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .dashboardGrid,
+  .homeStats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .dashboardGrid,
+  .homeStats {
+    grid-template-columns: 1fr;
+  }
+  
+  .homeHero h1 {
+    font-size: 2rem;
+  }
+  
+  .homeSubtitle {
+    font-size: 1rem;
+  }
+}

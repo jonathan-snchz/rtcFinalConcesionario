@@ -1,0 +1,187 @@
+/* Form input y Select */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: bold;
+  color: var(--dark);
+  font-size: 0.9rem;
+}
+
+.required {
+  color: var(--danger);
+}
+
+.formInput,
+.formSelect {
+  padding: 10px 12px;
+  border: 1px solid var(--borderColor);
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.formInput:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.formInput.error,
+.formSelect.error {
+  border-color: var(--danger);
+  background-color: var(--light);
+}
+
+.formInput.readonly,
+.formSelect.readonly {
+  background: var(--light);
+  cursor: not-allowed;
+  border-color: var(--borderColor);
+}
+
+.formSelect {
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: var(--danger);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+/* Form row */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.formRow.fullWidth {
+  grid-template-columns: 1fr;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* Form section */
+.formSection {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  margin-bottom: 1.5rem;
+}
+
+.formSection h3 {
+  margin: 0 0 1rem 0;
+  color: var(--textColor);
+  font-size: 1.1rem;
+}
+
+/* Form actions */
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borderColor);
+}
+
+/* Image upload */
+.imageUploadSection {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border: 1px solid var(--borderColor);
+  margin-bottom: 1.5rem;
+}
+
+.imageUploadSection h3 {
+  margin: 0 0 1rem 0;
+  color: var(--textColor);
+}
+
+.imagePreviewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.imagePreview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+  border: 1px solid var(--borderColor);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light);
+  border: 2px dashed var(--secondary);
+  border-radius: 4px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.imageUploadControls {
+  text-align: center;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileHelpText {
+  margin-top: 0.5rem;
+  color: var(--textMuted);
+  font-size: 0.85rem;
+}
+
+/* Textarea */
+.formTextarea {
+  padding: 10px 12px;
+  border: 1px solid var(--borderColor);
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  background: var(--white);
+}
+
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.formTextarea.error {
+  border-color: var(--danger);
+  background-color: var(--light);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

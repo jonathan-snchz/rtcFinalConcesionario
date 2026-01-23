@@ -1,0 +1,339 @@
+/* Cars Container */
+.carsContainer {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carsHeader {
+  margin-bottom: 2rem;
+}
+
+.carsHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* Cars Grid */
+.carsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Car Card */
+.carCard {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--borderColor);
+  transition: var(--transition);
+}
+
+.carCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.carImage {
+  height: 200px;
+  background: var(--light);
+  position: relative;
+}
+
+.carImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carImagePlaceholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.availabilityBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.availability-disponible {
+  background: var(--success);
+}
+
+.availability-vendido {
+  background: var(--danger);
+}
+
+.availability-reservado {
+  background: var(--warning);
+  color: var(--dark);
+}
+
+.carInfo {
+  padding: 1.5rem;
+}
+
+.carInfo h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.carYear,
+.carKm,
+.carColor {
+  color: var(--textMuted);
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.carPrice {
+  color: var(--success);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+/* Add Car Card */
+.addCarCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--light);
+  border: 2px dashed var(--borderColor);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--textMuted);
+  min-height: 300px;
+  transition: var(--transition);
+}
+
+.addCarCard:hover {
+  background: var(--light);
+  border-color: var(--secondary);
+  color: var(--textColor);
+}
+
+.addCarIcon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* Car Detail */
+.carDetailContainer {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.carDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.carDetailHeader h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.carActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.carDetailContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.carImageSection {
+  width: 100%;
+}
+
+.carDetailImage {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.carDetailImagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background: var(--light);
+  border: 2px dashed var(--borderColor);
+  border-radius: 4px;
+  color: var(--textMuted);
+}
+
+.carInfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.availabilityTag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.availabilityTag.availability-disponible {
+  background: var(--success);
+}
+
+.availabilityTag.availability-vendido {
+  background: var(--danger);
+}
+
+.availabilityTag.availability-reservado {
+  background: var(--warning);
+  color: var(--dark);
+}
+
+/* Form Container */
+.carFormContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Delete confirmation */
+.deleteConfirm {
+  text-align: center;
+}
+
+.deletePreview {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+.warning {
+  color: var(--danger);
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+/* No Results */
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  color: var(--textMuted);
+  background: var(--light);
+  border-radius: var(--radius);
+}
+
+/* Loading & Error */
+.loading,
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 1.1rem;
+  color: var(--textMuted);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .carsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .carsContainer,
+  .carDetailContainer,
+  .carFormContainer {
+    padding: 1rem;
+  }
+  
+  .carsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .carDetailContent {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .carDetailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .carActions {
+    width: 100%;
+  }
+}

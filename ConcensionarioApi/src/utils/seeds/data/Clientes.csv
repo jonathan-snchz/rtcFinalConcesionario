@@ -1,0 +1,101 @@
+ID cliente,Nombre del cliente,Email,Preferencias del cliente
+1,Juan Pérez,juan.perez@gmail.com,Financiamiento/ Asientos de Cuero
+2,María González,maria.g@gmail.com,Mantenimiento Programado/ Bluetooth
+3,Carlos Rodríguez,carlosr@gmail.com,Descuentos en Repuestos/ Sistema de Navegación
+4,Laura Martínez,laura.m@gmail.com,Programa de Lealtad/ Asesoramiento Personalizado
+5,Roberto Sánchez,roberto.s@gmail.com,Promociones Especiales/ Seguro a Terceros
+6,Ana López,ana.l@gmail.com,Actualizaciones de Modelos/ Servicio Rápido
+7,Javier Torres,javier.t1@gmail.com,Reparaciones Gratuitas/ Opciones de Financiamiento
+8,Isabel Ramírez,isabel.r@gmail.com,Programa de Recomendaciones/ Asientos Calefaccionados
+9,Alejandro Fernández,alejandro.f@gmail.com,Actualizaciones de Software/ Paquetes de Entretenimiento
+10,Laura Díaz,laura.d@gmail.com,Descuentos en Accesorios/ Preferencia por SUV
+11,Andrés Silva,andres.s@gmail.com,Paquetes de Servicios/ Actualizaciones de Tecnología
+12,Patricia López,patricia.l@gmail.com,Ofertas Especiales/ Asesoramiento de Financiamiento
+13,Ricardo García,ricardo.g@gmail.com,Programa de Recompensas/ Asientos Ventilados
+14,Gabriela Ruiz,gabriela.r@gmail.com,Mantenimiento Programado/ Preferencia por Color Blanco
+15,José Martínez,jose.m@gmail.com,Descuentos en Repuestos/ Asesoramiento de Seguros
+16,Marta Fernández,marta.f@gmail.com,Actualizaciones de Modelos/ Preferencia por Sedanes
+17,Alejandro Díaz,alejandro.d1@gmail.com,Regalos de Cumpleaños/ Opciones de Financiamiento
+18,Laura Herrera,laura.h@gmail.com,Actualizaciones de Tecnología/ Programas de Lealtad
+19,Javier Sánchez,javier.s@gmail.com,Descuentos en Accesorios/ Preferencia por Hatchbacks
+20,Carolina Gómez,carolina.g1@gmail.com,Asientos con Ajuste Eléctrico/ Ofertas de Fin de Año
+21,Sergio Ramírez,sergio.r@gmail.com,Sistema de Entretenimiento/ Descuentos en Servicios
+22,Carolina Martínez,carolina.m@gmail.com,Asesoramiento de Repuestos/ Preferencia por Compactos
+23,Juan Carlos Gómez,juan.g@gmail.com,Paquetes de Mantenimiento/ Ofertas en Accesorios
+24,Gabriela Torres,gabriela.t@gmail.com,Programa de Recomendaciones/ Descuentos en Reparaciones
+25,Sebastián López,sebastian.l@gmail.com,Actualizaciones de Navegación/ Preferencia por Sedanes
+26,Valeria Rodríguez,valeria.r1@gmail.com,Asientos con Calefacción/ Descuentos en Seguros
+27,José Luis Martínez,joseluis.m@gmail.com,Actualizaciones de Tecnología/ Preferencia por SUVs
+28,Carolina Silva,carolina.s@gmail.com,Programa de Lealtad/ Descuentos en Mantenimiento
+29,Alejandro González,alejandro.g@gmail.com,Sistema de Sonido Premium/ Preferencia por Híbridos
+30,Laura Sánchez,laura.s@gmail.com,Descuentos en Financiamiento/ Preferencia por Off-Road
+31,Martín Herrera,martin.h@gmail.com,Descuentos en Repuestos/ Preferencia por Hatchbacks
+32,Paola Rodríguez,paola.r@gmail.com,Sistema de Entretenimiento/ Descuentos en Mantenimiento
+33,Francisco Díaz,francisco.d@gmail.com,Programa de Recomendaciones/ Asientos Ventilados
+34,Andrea Martínez,andrea.m@gmail.com,Descuentos en Accesorios/ Actualizaciones de Software
+35,Luisa Fernández,luisa.f@gmail.com,Mantenimiento Programado/ Preferencia por SUVs
+36,Ricardo Sánchez,ricardo.s@gmail.com,Ofertas Especiales/ Asesoramiento de Financiamiento
+37,Valentina Gómez,valentina.g1@gmail.com,Programa de Recompensas/ Descuentos en Seguros
+38,Eduardo Torres,eduardo.t1@gmail.com,Asesoramiento de Repuestos/ Preferencia por Sedanes
+39,Sofía Martínez,sofia.m1@gmail.com,Descuentos en Mantenimiento/ Preferencia por Minivans
+40,Alejandro Ramírez,alejandro.r1@gmail.com,Sistema de Sonido Premium/ Descuentos en Financiamiento
+41,Daniela Gutiérrez,daniela.g1@gmail.com,Descuentos en Repuestos/ Preferencia por Minivans
+42,Guillermo López,guillermo.l@gmail.com,Sistema de Navegación/ Descuentos en Mantenimiento
+43,María José Ramírez,mariajose.r@gmail.com,Programa de Recomendaciones/ Preferencia por SUVs
+44,Francisco Sánchez,francisco.s@gmail.com,Mantenimiento Programado/ Descuentos en Seguros
+45,Valeria González,valeria.g@gmail.com,Sistema de Entretenimiento/ Preferencia por Vehículos Grandes
+46,Javier Martínez,javier.m1@gmail.com,Descuentos en Accesorios/ Asesoramiento de Financiamiento
+47,Adriana Díaz,adriana.d@gmail.com,Ofertas Especiales/ Preferencia por SUVs
+48,Alejandro Torres,alejandro.t1@gmail.com,Actualizaciones de Tecnología/ Descuentos en Mantenimiento
+49,Carla Fernández,carla.f@gmail.com,Descuentos en Seguros/ Preferencia por Sedanes
+50,Manuel Gómez,manuel.g@gmail.com,Programa de Lealtad/ Descuentos en Repuestos
+51,Roberto Díaz,roberto.d@gmail.com,Promociones Especiales/ Seguro a Terceros
+52,Ana Sofía Martínez,anasofia.m@gmail.com,Actualizaciones de Modelos/ Servicio Rápido
+53,Diego Ramírez,diego.r1@gmail.com,Reparaciones Gratuitas/ Opciones de Financiamiento
+54,Gabriela López,gabriela.l@gmail.com,Programa de Recomendaciones/ Asientos Calefaccionados
+55,Martín Gómez,martin.g@gmail.com,Actualizaciones de Software/ Paquetes de Entretenimiento
+56,Carolina Ramírez,carolina.r@gmail.com,Descuentos en Accesorios/ Preferencia por SUV
+57,Javier Torres,javier.t2@gmail.com,Paquetes de Servicios/ Actualizaciones de Tecnología
+58,Valentina Martínez,valentina.m@gmail.com,Ofertas Especiales/ Asesoramiento de Financiamiento
+59,Alejandro Díaz,alejandro.d2@gmail.com,Programa de Recompensas/ Asientos Ventilados
+60,María José Gutiérrez,mariajose.g@gmail.com,Mantenimiento Programado/ Preferencia por Color Blanco
+61,Andrea Sánchez,andrea.s@gmail.com,Descuentos en Repuestos/ Asesoramiento de Seguros
+62,Sebastián Ramírez,sebastian.r@gmail.com,Actualizaciones de Modelos/ Preferencia por Sedanes
+63,Sofía Martínez,sofia.m2@gmail.com,Regalos de Cumpleaños/ Opciones de Financiamiento
+64,Carlos López,carlos.l@gmail.com,Actualizaciones de Tecnología/ Programas de Lealtad
+65,Valentina Gómez,valentina.g2@gmail.com,Descuentos en Accesorios/ Preferencia por Hatchbacks
+66,Andrés Díaz,andres.d1@gmail.com,Asientos con Ajuste Eléctrico/ Ofertas de Fin de Año
+67,Carolina Torres,carolina.t@gmail.com,Sistema de Entretenimiento/ Descuentos en Servicios
+68,Eduardo Martínez,eduardo.m@gmail.com,Asesoramiento de Repuestos/ Preferencia por Compactos
+69,Daniela Gutiérrez,daniela.g2@gmail.com,Paquetes de Mantenimiento/ Ofertas en Accesorios
+70,Juan Martínez,juan.m@gmail.com,Programa de Recomendaciones/ Descuentos en Reparaciones
+71,María Fernández,maria.f@gmail.com,Actualizaciones de Navegación/ Preferencia por Sedanes
+72,Roberto Gómez,roberto.g@gmail.com,Asientos con Calefacción/ Descuentos en Seguros
+73,Valeria Díaz,valeria.d@gmail.com,Actualizaciones de Tecnología/ Preferencia por SUVs
+74,Francisco Martínez,francisco.m@gmail.com,Programa de Lealtad/ Descuentos en Mantenimiento
+75,Ana Torres,ana.t@gmail.com,Sistema de Sonido Premium/ Preferencia por Híbridos
+76,Diego Gutiérrez,diego.g@gmail.com,Descuentos en Financiamiento/ Preferencia por Off-Road
+77,Carolina Díaz,carolina.d@gmail.com,Asientos con Calefacción/ Descuentos en Seguros
+78,Alejandro Ramírez,alejandro.r2@gmail.com,Actualizaciones de Tecnología/ Preferencia por SUVs
+79,Laura Martínez,laura.m2@gmail.com,Programa de Lealtad/ Descuentos en Mantenimiento
+80,José Torres,jose.t@gmail.com,Sistema de Sonido Premium/ Preferencia por Híbridos
+81,Marta Díaz,marta.d@gmail.com,Descuentos en Financiamiento/ Preferencia por Off-Road
+82,Santiago Gómez,santiago.g@gmail.com,Descuentos en Repuestos/ Preferencia por Hatchbacks
+83,Valentina Ramírez,valentina.r@gmail.com,Sistema de Entretenimiento/ Descuentos en Mantenimiento
+84,Eduardo Gutiérrez,eduardo.g@gmail.com,Programa de Recomendaciones/ Asientos Ventilados
+85,Sofía Torres,sofia.t@gmail.com,Descuentos en Accesorios/ Actualizaciones de Software
+86,Javier Díaz,javier.d@gmail.com,Mantenimiento Programado/ Preferencia por SUVs
+87,Gabriela Martínez,gabriela.m@gmail.com,Ofertas Especiales/ Asesoramiento de Financiamiento
+88,Alejandro Torres,alejandro.t2@gmail.com,Programa de Recompensas/ Descuentos en Seguros
+89,Martina Gómez,martina.g@gmail.com,Asesoramiento de Repuestos/ Preferencia por Sedanes
+90,Andrés Díaz,andres.d2@gmail.com,Descuentos en Mantenimiento/ Preferencia por Minivans
+91,Diego Ramírez,diego.r2@gmail.com,Sistema de Sonido Premium/ Descuentos en Financiamiento
+92,Carolina Gómez,carolina.g2@gmail.com,Descuentos en Repuestos/ Preferencia por Minivans
+93,Javier Martínez,javier.m2@gmail.com,Sistema de Navegación/ Descuentos en Mantenimiento
+94,Valentina Díaz,valentina.d@gmail.com,Programa de Recomendaciones/ Preferencia por SUVs
+95,Eduardo Torres,eduardo.t2@gmail.com,Mantenimiento Programado/ Descuentos en Seguros
+96,Marta Gutiérrez,marta.g@gmail.com,Asientos con Calefacción/ Descuentos en Seguros
+97,Alejandro Martínez,alejandro.m@gmail.com,Actualizaciones de Tecnología/ Preferencia por SUVs
+98,Sofía Díaz,sofia.d@gmail.com,Programa de Lealtad/ Descuentos en Mantenimiento
+99,Carlos Gómez,carlos.g@gmail.com,Sistema de Sonido Premium/ Preferencia por Híbridos
+100,Valeria Rodríguez,valeria.r2@gmail.com,Descuentos en Financiamiento/ Preferencia por Off-Road

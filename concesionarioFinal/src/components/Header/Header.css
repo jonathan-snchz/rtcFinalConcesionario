@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--light);
+  border-bottom: 1px solid var(--borderColor);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userGreeting {
+  color: var(--textMuted);
+  font-size: 0.95rem;
+}
+
+.userGreeting strong {
+  color: var(--textColor);
+}
+
+/* Reactive */
+@media (max-width: 800px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .userSection {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

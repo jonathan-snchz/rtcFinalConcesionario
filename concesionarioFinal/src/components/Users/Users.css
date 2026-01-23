@@ -1,0 +1,249 @@
+/* Users container */
+.usersContainer {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.usersHeader {
+  margin-bottom: 2rem;
+}
+
+.usersHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* Users list */
+.usersList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.userItem:hover {
+  background: var(--light);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userInfo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.userInfo p {
+  margin: 0.25rem 0;
+  color: var(--textMuted);
+  font-size: 0.9rem;
+}
+
+.userId {
+  font-weight: bold;
+  color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--light);
+  font-size: 0.85rem;
+}
+
+/* Add user item */
+.addUserItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--light);
+  border: 2px dashed var(--borderColor);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--textMuted);
+  transition: var(--transition);
+}
+
+.addUserItem:hover {
+  background: var(--light);
+  border-color: var(--secondary);
+  color: var(--textColor);
+}
+
+.addUserIcon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+/* User detail page */
+.userDetailContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.userDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.userDetailHeader h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.userActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.userDetailContent {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* Profile page */
+.profileContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profileHeader {
+  margin-bottom: 2rem;
+}
+
+.profileHeader h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.profileActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Form elements */
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.editFormSection {
+  margin-bottom: 2rem;
+}
+
+.editFormSection h3 {
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* Delete confirmation */
+.deleteConfirm {
+  text-align: center;
+}
+
+.deletePreview {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+.warning {
+  color: var(--danger);
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+/* No Results */
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  color: var(--textMuted);
+  background: var(--light);
+  border-radius: var(--radius);
+}
+
+/* Loading & Error */
+.loading,
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .usersContainer,
+  .userDetailContainer,
+  .profileContainer {
+    padding: 1rem;
+  }
+  
+  .userDetailContent {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .userItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .userDetailHeader,
+  .profileHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .userActions,
+  .profileActions {
+    width: 100%;
+  }
+}

@@ -1,0 +1,84 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /*  Colores base  */
+  --primary: #b124ca;
+  --primary-dark: #7b0a66fc;
+  --secondary: #7d6c7a;
+  --secondary-dark: #625461;
+  --success: #20ad41;
+  --success-dark: #256b36;
+  --success-light: #c4eacc;
+  --danger: #d92235;
+  --danger-dark: #9a1b28;
+  --danger-light: #dfacb0;
+  --warning: #ffaa00;
+  --warning-dark: #ca8403;
+  --warning-light: #ecc995;
+  
+  /* Textos/Fondos */
+  --light: #d1c8d0;
+  --dark: #403742;
+  --white: #cccbcc;
+  --black: #141517;
+  
+  /* Bordes y ajustes */
+  --borderColor: #cdbccd;
+  --textColor: var(--black);
+  --textMuted: #7a6c7d;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Espaciados y transiciones */
+  --radius: 10px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: inherit;
+  color: var(--textColor);
+  background-color: var(--light);
+  line-height: 1.4;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  padding: 2rem;
+}
+
+.appLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: var(--textMuted);
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

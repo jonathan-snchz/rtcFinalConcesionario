@@ -1,0 +1,222 @@
+/* Clients container */
+.clientsContainer {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clientsHeader {
+  margin-bottom: 2rem;
+}
+
+.clientsHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* Clients list */
+.clientsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clientItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.clientItem:hover {
+  background: var(--light);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.clientInfo {
+  flex: 1;
+}
+
+.clientInfo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.clientInfo p {
+  margin: 0.25rem 0;
+  color: var(--textMuted);
+  font-size: 0.9rem;
+}
+
+.clientId {
+  font-weight: bold;
+  color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--light);
+  font-size: 0.85rem;
+}
+
+/* Add client item */
+.addClientItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--light);
+  border: 2px dashed var(--borderColor);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--textMuted);
+  transition: var(--transition);
+}
+
+.addClientItem:hover {
+  background: var(--light);
+  border-color: var(--secondary);
+  color: var(--textColor);
+}
+
+.addClientIcon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+/* Client detail */
+.clientDetailContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.clientDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.clientDetailHeader h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.clientActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.clientDetailContent {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* Form container */
+.clientFormContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.clientForm {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* No results */
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  color: var(--textMuted);
+  background: var(--light);
+  border-radius: var(--radius);
+}
+
+/* Loading y error */
+.loading,
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 1.1rem;
+  color: var(--textMuted);
+}
+
+/* Delete confirmation */
+.deleteConfirm {
+  text-align: center;
+}
+
+.deletePreview {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+.warning {
+  color: var(--danger);
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .clientsContainer,
+  .clientDetailContainer {
+    padding: 1rem;
+  }
+  
+  .clientDetailContent,
+  .clientForm {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .clientItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .clientDetailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .clientActions {
+    width: 100%;
+  }
+}
