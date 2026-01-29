@@ -13,8 +13,9 @@ import './Clients.css';
 const ClientDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { loading, error, get, del, setError } = useApi();
+  const { loading, error: apiError, get, del } = useApi();
   const [client, setClient] = useState(null);
+  const [fetchError, setFetchError] = useState('');
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -23,8 +24,10 @@ const ClientDetail = () => {
       try {
         const data = await get(`/clients/${id}`);
         setClient(data);
+        setFetchError('');
       } catch (error) {
         console.error('Error fetching client:', error);
+        setFetchError(error.message || 'Error al cargar el cliente');
       }
     };
 
@@ -36,35 +39,39 @@ const ClientDetail = () => {
       await del(`/clients/${id}`);
       
       navigate('/clients', { 
-        state: { message: 'Cliente eliminado exitosamente' }
+        state: { message: 'Cliente eliminado' }
       });
       
     } catch (error) {
       console.error('Delete error:', error);
       setShowDeleteConfirm(false);
+      setFetchError(error.message || 'Error al eliminar el cliente');
     }
   };
 
   const handleUpdate = (updatedClient) => {
     setClient(updatedClient);
     setShowEditForm(false);
-    setError('');
+    setFetchError('');
   };
 
   const handleEditCancel = () => {
     setShowEditForm(false);
+    setFetchError('');
   };
 
+  const displayError = fetchError || apiError;
+
   if (loading && !client) return <div className="loading">Cargando detalles del cliente...</div>;
-  if (error && !client) return <Alert type="error" message={error} />;
+  if (displayError && !client) return <Alert type="error" message={displayError} />;
   if (!client) return <div className="notFound">Cliente no encontrado</div>;
 
   return (
     <div className="clientDetailContainer">
       <Link to="/clients" className="backLink">← Volver a Clientes</Link>
       
-      {error && !showDeleteConfirm && !showEditForm && (
-        <Alert type="error" message={error} />
+      {displayError && !showDeleteConfirm && !showEditForm && (
+        <Alert type="error" message={displayError} dismissible />
       )}
 
       <div className="clientDetailHeader">
@@ -73,14 +80,16 @@ const ClientDetail = () => {
           <Button 
             variant="primary"
             onClick={() => setShowEditForm(true)}
+            disabled={loading}
           >
             Editar
           </Button>
           <Button 
             variant="danger"
             onClick={() => setShowDeleteConfirm(true)}
+            disabled={loading}
           >
-            Eliminar
+            {loading ? 'Eliminando...' : 'Sí, Eliminar'}
           </Button>
         </div>
       </div>
@@ -119,7 +128,7 @@ const ClientDetail = () => {
           title="¿Eliminar este cliente?"
           onClose={() => {
             setShowDeleteConfirm(false);
-            setError('');
+            setFetchError('');
           }}
           size="small"
         >
@@ -146,7 +155,7 @@ const ClientDetail = () => {
                 variant="secondary"
                 onClick={() => {
                   setShowDeleteConfirm(false);
-                  setError('');
+                  setFetchError('');
                 }}
                 disabled={loading}
               >

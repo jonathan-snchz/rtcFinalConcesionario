@@ -6,7 +6,7 @@ import RegisterForm from './RegisterForm';
 import './Register.css';
 
 const Register = () => {
-  const [serverError, setServerError] = useState('');
+  const [formError, setFormError] = useState('');
   const { isAuthenticated } = useAuth();
   const { post, loading } = useApi();
   const navigate = useNavigate();
@@ -16,9 +16,8 @@ const Register = () => {
   }
 
   const handleRegister = async (name, email, password) => {
-    setServerError('');
-    
     try {
+      setFormError('');
       await post('/users/register', { name, email, password });
       
       navigate('/users', { 
@@ -26,7 +25,7 @@ const Register = () => {
       });
 
     } catch (error) {
-      setServerError(error.message || 'Registration failed');
+      setFormError(error.message || 'Error al registrar usuario');
     }
   };
 
@@ -34,8 +33,8 @@ const Register = () => {
     <div className="registerContainer">
       <RegisterForm
         onSubmit={handleRegister}
-        serverError={serverError}
-        isSubmitting={loading}
+        serverError={formError}
+        loading={loading}
       />
     </div>
   );

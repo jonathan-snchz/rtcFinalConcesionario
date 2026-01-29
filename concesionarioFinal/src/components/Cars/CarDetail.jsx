@@ -13,35 +13,25 @@ import './Cars.css';
 const CarDetail = () => {
   const { vin } = useParams();
   const navigate = useNavigate();
-  const { loading, error: apiError, get, del, setError } = useApi();
+  const { loading, error: apiError, get, del } = useApi();
   const [car, setCar] = useState(null);
+  const [fetchError, setFetchError] = useState('');
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [fetchError, setFetchError] = useState('');
 
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchCar = async () => {
       try {
         const data = await get(`/cars/${vin}`);
-        if (isMounted) {
-          setCar(data);
-          setFetchError('');
-        }
+        setCar(data);
+        setFetchError('');
       } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching car:', error);
-          setFetchError(error.message || 'Error al cargar el coche');
-        }
+        console.error('Error fetching car:', error);
+        setFetchError(error.message || 'Error al cargar el vehículo');
       }
     };
 
     fetchCar();
-    
-    return () => {
-      isMounted = false;
-    };
   }, [vin, get]);
 
   const handleDelete = async () => {
@@ -49,26 +39,24 @@ const CarDetail = () => {
       await del(`/cars/${vin}`);
       
       navigate('/cars', { 
-        state: { message: 'Coche eliminado exitosamente' }
+        state: { message: 'Vehículo eliminado' }
       });
       
     } catch (error) {
       console.error('Delete error:', error);
       setShowDeleteConfirm(false);
-      setFetchError(error.message || 'Error al eliminar el coche');
+      setFetchError(error.message || 'Error al eliminar el vehículo');
     }
   };
 
   const handleUpdate = (updatedCar) => {
     setCar(updatedCar);
     setShowEditForm(false);
-    setError('');
     setFetchError('');
   };
 
   const handleEditCancel = () => {
     setShowEditForm(false);
-    setError('');
     setFetchError('');
   };
 
@@ -76,7 +64,7 @@ const CarDetail = () => {
 
   if (loading && !car) return <div className="loading">Cargando detalles del vehículo...</div>;
   if (displayError && !car) return <Alert type="error" message={displayError} />;
-  if (!car) return <div className="notFound">Coche no encontrado</div>;
+  if (!car) return <div className="notFound">Vehículo no encontrado</div>;
 
   return (
     <div className="carDetailContainer">
@@ -107,7 +95,7 @@ const CarDetail = () => {
             variant="danger"
             onClick={() => setShowDeleteConfirm(true)}
           >
-            Eliminar
+            {loading ? 'Eliminando...' : 'Sí, Eliminar'}
           </Button>
         </div>
       </div>
@@ -148,7 +136,7 @@ const CarDetail = () => {
             </InfoItem>
             <InfoItem label="Creado">
                 {formatDate(car.createdAt)}
-            </InfoItem>
+          </InfoItem>
             <InfoItem label="Actualizado">
                 {formatDate(car.updatedAt)}
             </InfoItem>
@@ -158,7 +146,7 @@ const CarDetail = () => {
 
       {showEditForm && (
         <Modal 
-          title={`Editar Coche: ${car.vin}`}
+          title={`Editar Vehículo: ${car.vin}`}
           size="large"
         >
           <CarForm 
@@ -171,16 +159,15 @@ const CarDetail = () => {
 
       {showDeleteConfirm && (
         <Modal
-          title="¿Eliminar este coche?"
+          title="¿Eliminar este vehículo?"
           onClose={() => {
             setShowDeleteConfirm(false);
-            setError('');
             setFetchError('');
           }}
           size="small"
         >
           <div className="deleteConfirm">
-            <p>¿Estás seguro de que quieres eliminar este coche?</p>
+            <p>¿Estás seguro de que quieres eliminar este vehículo?</p>
             
             <div className="deletePreview">
               <strong>{car.brand} {car.model} ({car.year})</strong>
@@ -202,7 +189,6 @@ const CarDetail = () => {
                 variant="secondary"
                 onClick={() => {
                   setShowDeleteConfirm(false);
-                  setError('');
                   setFetchError('');
                 }}
                 disabled={loading}

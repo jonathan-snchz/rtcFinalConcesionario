@@ -1,4 +1,4 @@
-/* LogIn container */
+/* Login container */
 .logInContainer {
   display: flex;
   justify-content: center;
@@ -7,10 +7,10 @@
   padding: 2rem;
 }
 
-/* LogIn card */
+/* Login card */
 .logInCard {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background: var(--white);
   border-radius: var(--radius);
   padding: 2rem;
@@ -19,7 +19,7 @@
 
 .logInHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .logInHeader h2 {
@@ -33,52 +33,31 @@
   font-size: 0.9rem;
 }
 
-/* LogIn form */
+/* Login form */
 .logInForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.formGroup label {
-  font-weight: bold;
-  color: var(--dark);
+/* LogIn footer */
+.logInFooter {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borderColor);
+  color: var(--textMuted);
   font-size: 0.9rem;
 }
 
-.formInput {
-  padding: 10px 12px;
-  border: 1px solid var(--borderColor);
-  border-radius: 4px;
-  font-size: 16px;
-  background: var(--white);
+.logInFooter a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.formInput:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-.formInput.error {
-  border-color: var(--danger);
-  background-color: var(--light);
-}
-
-.formInput:disabled {
-  background: var(--light);
-  cursor: not-allowed;
-}
-
-.errorMessage {
-  color: var(--danger);
-  font-size: 0.85rem;
-  min-height: 1.2em;
+.logInFooter a:hover {
+  text-decoration: underline;
 }
 
 /* LogIn loading */
@@ -91,6 +70,14 @@
   color: var(--textMuted);
 }
 
+/* Form actions */
+.logInForm .formActions {
+  margin-top: 1rem;
+  border-top: none;
+  padding-top: 0;
+  justify-content: center;
+}
+
 /* Responsive */
 @media (max-width: 800px) {
   .logInContainer {
@@ -101,5 +88,15 @@
     padding: 1.5rem;
     box-shadow: none;
     border: 1px solid var(--borderColor);
+  }
+}
+
+@media (max-width: 600px) {
+  .logInCard {
+    padding: 1rem;
+  }
+  
+  .logInHeader h2 {
+    font-size: 1.3rem;
   }
 }

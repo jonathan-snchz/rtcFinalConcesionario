@@ -16,7 +16,7 @@ const FormInput = ({
   onChange
 }) => {
   const validationRules = {
-    required: required ? `${label} es requerido` : false,
+    required: required ? `${label} es obligatorio` : false,
     ...rules
   };
 

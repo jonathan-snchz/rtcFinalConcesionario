@@ -10,7 +10,7 @@
 /* Register card */
 .registerCard {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background: var(--white);
   border-radius: var(--radius);
   padding: 2rem;
@@ -19,7 +19,7 @@
 
 .registerHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .registerHeader h2 {
@@ -37,48 +37,7 @@
 .registerForm {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.formGroup label {
-  font-weight: bold;
-  color: var(--dark);
-  font-size: 0.9rem;
-}
-
-.formInput {
-  padding: 10px 12px;
-  border: 1px solid var(--borderColor);
-  border-radius: 4px;
-  font-size: 16px;
-  background: var(--white);
-}
-
-.formInput:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-.formInput.error {
-  border-color: var(--danger);
-  background-color: var(--light);
-}
-
-.formInput:disabled {
-  background: var(--light);
-  cursor: not-allowed;
-}
-
-.errorMessage {
-  color: var(--danger);
-  font-size: 0.85rem;
-  min-height: 1.2em;
+  gap: 1.5rem;
 }
 
 /* Register footer */
@@ -101,6 +60,15 @@
   text-decoration: underline;
 }
 
+/* Form actions */
+.registerForm .formActions {
+  margin-top: 1rem;
+  border-top: none;
+  padding-top: 0;
+  justify-content: center;
+}
+
+/* Responsive */
 @media (max-width: 800px) {
   .registerContainer {
     padding: 1rem;
@@ -110,5 +78,15 @@
     padding: 1.5rem;
     box-shadow: none;
     border: 1px solid var(--borderColor);
+  }
+}
+
+@media (max-width: 600px) {
+  .registerCard {
+    padding: 1rem;
+  }
+  
+  .registerHeader h2 {
+    font-size: 1.3rem;
   }
 }

@@ -4,8 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
 import FormInput from '../FormComponents/FormInput';
 import FormSelect from '../FormComponents/FormSelect';
+import FormActions from '../FormComponents/FormActions';
 import Alert from '../Alerts/Alert';
-import Button from '../Buttons/Button';
 import { PAYMENT_METHOD_OPTIONS, formatDateForInput, formatText } from '../../utils/data';
 import './Sales.css';
 
@@ -14,13 +14,13 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
   const location = useLocation();
   const isEditMode = !!sale;
   
-  const { loading, error: serverError, get, post, put, setError } = useApi();
+  const { loading, error: serverError, get, post, put } = useApi();
   const [cars, setCars] = useState([]);
   const [clients, setClients] = useState([]);
   const [nextId, setNextId] = useState(null);
   const [isFromCarDetail, setIsFromCarDetail] = useState(false);
   const [selectedCarId, setSelectedCarId] = useState('');
-  const [fetchError, setFetchError] = useState('');
+  const [formError, setFormError] = useState('');
 
   const carFromState = location.state?.car;
 
@@ -28,7 +28,7 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
     const today = new Date();
     const delivery = new Date(today);
     delivery.setDate(today.getDate() + 7);
-    return delivery.toISOString().split('T')[0];
+    return formatDateForInput(delivery);
   };
 
   const {
@@ -49,18 +49,14 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
   });
 
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchData = async () => {
       try {
         if (!isEditMode) {
           const salesData = await get('/sales');
-          if (isMounted) {
-            const maxId = salesData.length > 0 
-              ? Math.max(...salesData.map(s => s.id))
-              : 0;
-            setNextId(maxId + 1);
-          }
+          const maxId = salesData.length > 0 
+            ? Math.max(...salesData.map(s => s.id))
+            : 0;
+          setNextId(maxId + 1);
         }
 
         const carsData = await get('/cars');
@@ -70,24 +66,17 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
         
         const clientsData = await get('/clients');
         
-        if (isMounted) {
-          setCars(availableCars);
-          setClients(clientsData);
-          setFetchError('');
-        }
+        setCars(availableCars);
+        setClients(clientsData);
+        setFormError('');
       } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching data:', error);
-          setFetchError('Error al cargar los datos necesarios');
-        }
+        console.error('Error fetching data:', error);
+        setFormError('Error al cargar los datos necesarios');
       }
     };
 
     fetchData();
     
-    return () => {
-      isMounted = false;
-    };
   }, [isEditMode, get]);
 
   useEffect(() => {
@@ -108,11 +97,13 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
   }, [nextId, isEditMode, setValue]);
 
   const onSubmit = async (formData) => {
-    setError('');
-    setFetchError('');
-    
     try {
-      const url = isEditMode ? `/sales/${sale.id}` : '/sales';
+      setFormError('');
+      
+      const url = isEditMode 
+        ? `/sales/${sale.id}`
+        : '/sales';
+      
       const method = isEditMode ? put : post;
 
       const result = await method(url, formData);
@@ -130,7 +121,7 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
       }
     } catch (error) {
       console.error('Error saving sale:', error);
-      setFetchError(error.message || 'Error al guardar la venta');
+      setFormError(error.message || 'Error al guardar la venta');
     }
   };
 
@@ -146,14 +137,14 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
 
   const paymentOptions = PAYMENT_METHOD_OPTIONS;
 
-  const displayError = fetchError || serverError;
+  const displayError = formError || serverError;
 
   return (
     <div className="saleFormContainer">
       <form onSubmit={handleSubmit(onSubmit)} className="saleForm">
         
         {displayError && (
-          <Alert type="error" message={displayError} />
+          <Alert type="error" message={displayError} dismissible />
         )}
 
         <div className="formSection">
@@ -161,15 +152,15 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
           
           {isFromCarDetail && carFromState && (
             <div className="preselectedCarInfo">
-              <h4>Vendiendo Este Coche:</h4>
+              <h4>Vendiendo Este Vehículo:</h4>
               <p><strong>{formatText(carFromState.brand)} {carFromState.model} ({carFromState.year})</strong></p>
               <p>VIN: {carFromState.vin} • Precio: ${carFromState.price?.toLocaleString()}</p>
               <p className="preselectedNote">
-                Este coche está preseleccionado. No puedes cambiarlo cuando inicias una venta desde la página de detalles del coche.
+                Este vehículo está preseleccionado. No puedes cambiarlo cuando inicias una venta desde la página de detalles del vehículo.
               </p>
               <input
                 type="hidden"
-                {...register('car', { required: 'Coche es requerido' })}
+                {...register('car', { required: 'Vehículo es obligatorio' })}
                 value={selectedCarId}
               />
             </div>
@@ -186,11 +177,14 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
               required={true}
               readOnly={true}
               disabled={loading}
+              rules={{
+                required: 'El ID es obligatorio',
+              }}
             />
 
             {!isFromCarDetail && (
               <FormSelect
-                label="Coche"
+                label="Vehículo"
                 register={register}
                 name="car"
                 errors={errors}
@@ -232,6 +226,12 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
               errors={errors}
               required={true}
               disabled={loading}
+              rules={{
+                validate: value => {
+                  const date = new Date(value);
+                  return !isNaN(date.getTime()) || 'Fecha inválida';
+                }
+              }}
             />
 
             <FormInput
@@ -242,39 +242,22 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
               errors={errors}
               required={true}
               disabled={loading}
+              rules={{
+                validate: value => {
+                  const date = new Date(value);
+                  return !isNaN(date.getTime()) || 'Fecha inválida';
+                }
+              }}
             />
           </div>
         </div>
 
-        <div className="formActions">
-          <Button 
-            type="submit" 
-            variant="success"
-            disabled={loading || (!isEditMode && !nextId)}
-          >
-            {loading ? 'Guardando...' : isEditMode ? 'Actualizar Venta' : 'Registrar Venta'}
-          </Button>
-          
-          {onCancel ? (
-            <Button 
-              type="button" 
-              variant="secondary"
-              onClick={onCancel}
-              disabled={loading}
-            >
-              Cancelar
-            </Button>
-          ) : (
-            <Button 
-              type="button" 
-              variant="secondary"
-              onClick={() => navigate('/sales')}
-              disabled={loading}
-            >
-              Cancelar
-            </Button>
-          )}
-        </div>
+        <FormActions
+          loading={loading}
+          isEditMode={isEditMode}
+          onCancel={onCancel}
+          submitText={isEditMode ? 'Actualizar Venta' : 'Registrar Venta'}
+        />
       </form>
     </div>
   );

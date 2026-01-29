@@ -13,7 +13,7 @@ const FormSelect = ({
   onChange
 }) => {
   const selectProps = register ? register(name, { 
-    required: required ? `${label} es requerido` : false 
+    required: required ? `${label} es obligatorio` : false 
   }) : {};
 
   return (

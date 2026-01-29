@@ -14,8 +14,9 @@ const UserDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user: currentUser } = useAuth();
-  const { loading, error, get, del, setError } = useApi();
+  const { loading, error: apiError, get, del } = useApi();
   const [user, setUser] = useState(null);
+  const [fetchError, setFetchError] = useState('');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
@@ -23,12 +24,15 @@ const UserDetail = () => {
       try {
         const data = await get(`/users/${id}`);
         setUser(data);
+        setFetchError('');
       } catch (error) {
         console.error('Error fetching user:', error);
+        setFetchError(error.message || 'Error al cargar el usuario');
       }
     };
 
     fetchUser();
+    
   }, [id, get]);
 
   const handleDelete = async () => {
@@ -40,21 +44,23 @@ const UserDetail = () => {
     } catch (error) {
       console.error('Delete error:', error);
       setShowDeleteConfirm(false);
+      setFetchError(error.message || 'Error al eliminar el usuario');
     }
   };
 
-  if (loading && !user) return <div className="loading">Cargando detalles del usuario...</div>;
-  if (error && !user) return <Alert type="error" message={error} />;
-  if (!user) return <div className="notFound">Usuario no encontrado</div>;
+  const displayError = fetchError || apiError;
+  const isCurrentUser = currentUser?._id === user?._id;
 
-  const isCurrentUser = currentUser?._id === user._id;
+  if (loading && !user) return <div className="loading">Cargando detalles del usuario...</div>;
+  if (displayError && !user) return <Alert type="error" message={displayError} />;
+  if (!user) return <div className="notFound">Usuario no encontrado</div>;
 
   return (
     <div className="userDetailContainer">
       <Link to="/users" className="backLink">← Volver a Usuarios</Link>
       
-      {error && !showDeleteConfirm && (
-        <Alert type="error" message={error} />
+      {displayError && !showDeleteConfirm && (
+        <Alert type="error" message={displayError} dismissible />
       )}
 
       <div className="userDetailHeader">
@@ -64,12 +70,14 @@ const UserDetail = () => {
             <Button 
               variant="primary"
               onClick={() => navigate('/profile')}
+              disabled={loading}
             >
               Editar Perfil
             </Button>
             <Button 
               variant="danger"
               onClick={() => setShowDeleteConfirm(true)}
+              disabled={loading}
             >
               Eliminar Cuenta
             </Button>
@@ -96,7 +104,7 @@ const UserDetail = () => {
           title="¿Eliminar tu cuenta?"
           onClose={() => {
             setShowDeleteConfirm(false);
-            setError('');
+            setFetchError('');
           }}
           size="small"
         >
@@ -123,7 +131,7 @@ const UserDetail = () => {
                 variant="secondary"
                 onClick={() => {
                   setShowDeleteConfirm(false);
-                  setError('');
+                  setFetchError('');
                 }}
                 disabled={loading}
               >

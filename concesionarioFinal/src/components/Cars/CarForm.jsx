@@ -58,11 +58,6 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      setFormError('La imagen no debe superar los 5MB');
-      return;
-    }
-
     setFormError('');
     const reader = new FileReader();
     
@@ -124,7 +119,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
       
     } catch (error) {
       console.error('Submit error:', error);
-      setFormError(error.message || 'Error al guardar el coche');
+      setFormError(error.message || 'Error al guardar el vehículo');
     }
   };
 
@@ -143,11 +138,11 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
           onFileChange={handleFileChange}
           onRemove={handleRemoveImage}
           disabled={loading}
-          label="Imagen del Coche"
+          label="Imagen del Vehículo"
         />
 
         <div className="formSection">
-          <h3>Información del Coche</h3>
+          <h3>Información del Vehículo</h3>
           
           <div className="formRow">
             <FormInput
@@ -184,7 +179,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
               register={register}
               name="model"
               errors={errors}
-              placeholder="Modelo del coche"
+              placeholder="Modelo del vehículo"
               disabled={loading}
             />
 
@@ -209,8 +204,8 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
               required={true}
               disabled={loading}
               rules={{
-                min: { value: 1900, message: 'Año debe ser después de 1900' },
-                max: { value: currentYear + 1, message: `Año no puede ser mayor a ${currentYear + 1}` }
+                min: { value: 1900, message: 'Año debe ser posterior a 1900' },
+                max: { value: currentYear + 1, message: `Año no puede ser posterior a ${currentYear + 1}` }
               }}
             />
 
@@ -298,7 +293,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
           loading={loading}
           isEditMode={isEditMode}
           onCancel={onCancel}
-          submitText={isEditMode ? 'Actualizar Coche' : 'Agregar Coche'}
+          submitText={isEditMode ? 'Actualizar Vehículo' : 'Agregar Vehículo'}
         />
       </form>
     </div>

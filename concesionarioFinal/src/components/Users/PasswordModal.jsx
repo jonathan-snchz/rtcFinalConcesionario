@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Modal from '../Modal/Modal';
+import FormInput from '../FormComponents/FormInput';
+import FormActions from '../FormComponents/FormActions';
 import Alert from '../Alerts/Alert';
-import Button from '../Buttons/Button';
-import './Users.css';
 
 const PasswordModal = ({ 
   onSave, 
@@ -10,7 +11,7 @@ const PasswordModal = ({
   loading = false,
   error = null 
 }) => {
-  const [serverError, setServerError] = useState(error);
+  const [formError, setFormError] = useState(error);
   
   const {
     register,
@@ -20,15 +21,20 @@ const PasswordModal = ({
     reset
   } = useForm({
     mode: 'onBlur',
+    defaultValues: {
+      oldPassword: '',
+      newPassword: '',
+      confirmPassword: ''
+    }
   });
 
   const onSubmit = async (data) => {
-    setServerError(null);
+    setFormError(null);
     try {
       await onSave(data.oldPassword, data.newPassword);
       reset();
     } catch (err) {
-      setServerError(err.message || 'Error changing password');
+      setFormError(err.message || 'Error al cambiar la contraseña');
     }
   };
 
@@ -38,96 +44,86 @@ const PasswordModal = ({
   };
 
   return (
-    <div className="modalOverlay">
-      <div className="modalContent">
-        <div className="modalHeader">
-          <h3>Change Password</h3>
-          <button onClick={handleCancel} className="closeButton">×</button>
-        </div>
-        
-        {serverError && (
-          <Alert type="error" message={serverError} />
-        )}
-        
-        <form onSubmit={handleSubmit(onSubmit)} className="passwordForm">
-          <div className="formGroup">
-            <label>Current Password *</label>
-            <input
+    <Modal
+      title="Cambiar Contraseña"
+      onClose={handleCancel}
+      size="small"
+    >
+      {formError && (
+        <Alert type="error" message={formError} dismissible />
+      )}
+      
+      <form onSubmit={handleSubmit(onSubmit)} className="passwordForm">
+        <div className="formSection">
+          <h3>Credenciales</h3>
+          
+          <div className="formRow">
+            <FormInput
+              label="Contraseña Actual"
               type="password"
-              {...register('oldPassword', {
-                required: 'Current password is required',
+              register={register}
+              name="oldPassword"
+              errors={errors}
+              placeholder="Ingresa tu contraseña actual"
+              required={true}
+              disabled={loading}
+              rules={{
+                required: 'La contraseña actual es requerida',
                 minLength: {
                   value: 4,
-                  message: 'Password must be at least 4 characters'
+                  message: 'La contraseña debe tener al menos 4 caracteres'
                 }
-              })}
-              disabled={loading}
-              className={`formInput ${errors.oldPassword ? 'error' : ''}`}
-              placeholder="Enter current password"
+              }}
             />
-            {errors.oldPassword && (
-              <span className="errorMessage">{errors.oldPassword.message}</span>
-            )}
           </div>
-          
-          <div className="formGroup">
-            <label>New Password *</label>
-            <input
+
+          <div className="formRow">
+            <FormInput
+              label="Nueva Contraseña"
               type="password"
-              {...register('newPassword', {
-                required: 'New password is required',
+              register={register}
+              name="newPassword"
+              errors={errors}
+              placeholder="Ingresa tu nueva contraseña"
+              required={true}
+              disabled={loading}
+              rules={{
+                required: 'La nueva contraseña es requerida',
                 minLength: {
                   value: 4,
-                  message: 'Password must be at least 4 characters'
+                  message: 'La contraseña debe tener al menos 4 caracteres'
                 }
-              })}
-              disabled={loading}
-              className={`formInput ${errors.newPassword ? 'error' : ''}`}
-              placeholder="Enter new password"
+              }}
             />
-            {errors.newPassword && (
-              <span className="errorMessage">{errors.newPassword.message}</span>
-            )}
           </div>
-          
-          <div className="formGroup">
-            <label>Confirm New Password *</label>
-            <input
+
+          <div className="formRow">
+            <FormInput
+              label="Confirmar Nueva Contraseña"
               type="password"
-              {...register('confirmPassword', {
-                required: 'Please confirm your password',
+              register={register}
+              name="confirmPassword"
+              errors={errors}
+              placeholder="Confirma tu nueva contraseña"
+              required={true}
+              disabled={loading}
+              rules={{
+                required: 'Por favor confirma tu contraseña',
                 validate: value => 
-                  value === getValues('newPassword') || 'Passwords do not match'
-              })}
-              disabled={loading}
-              className={`formInput ${errors.confirmPassword ? 'error' : ''}`}
-              placeholder="Confirm new password"
+                  value === getValues('newPassword') || 'Las contraseñas no coinciden'
+              }}
             />
-            {errors.confirmPassword && (
-              <span className="errorMessage">{errors.confirmPassword.message}</span>
-            )}
           </div>
-          
-          <div className="modalActions">
-            <Button 
-              type="submit"
-              variant="success"
-              disabled={loading}
-            >
-              {loading ? 'Changing Password...' : 'Change Password'}
-            </Button>
-            <Button 
-              type="button"
-              variant="secondary"
-              onClick={handleCancel}
-              disabled={loading}
-            >
-              Cancel
-            </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+
+        <FormActions
+          loading={loading}
+          isEditMode={false}
+          onCancel={handleCancel}
+          submitText={loading ? 'Cambiando...' : 'Cambiar Contraseña'}
+        />
+      </form>
+    </Modal>
   );
 };
 

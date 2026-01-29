@@ -11,35 +11,21 @@ import './Clients.css';
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [fetchError, setFetchError] = useState('');
-  const { loading, error: apiError, get } = useApi();
+  const { loading, error, get } = useApi();
   
-
   const { sortedData, requestSort, getSortIndicator } = useSort(clients, { key: 'name', direction: 'asc' });
 
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchClients = async () => {
       try {
         const data = await get('/clients');
-        if (isMounted) {
-          setClients(data);
-          setFetchError('');
-        }
+        setClients(data);
       } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching clients:', error);
-          setFetchError(error.message || 'Error al cargar los clientes');
-        }
+        console.error('Error fetching clients:', error);
       }
     };
 
     fetchClients();
-    
-    return () => {
-      isMounted = false;
-    };
   }, [get]);
 
   const filteredClients = useMemo(() => {
@@ -58,7 +44,7 @@ const ClientsList = () => {
   const clientSortOptions = CLIENT_SORT_OPTIONS;
 
   if (loading && clients.length === 0) return <div className="loading">Cargando clientes...</div>;
-  if ((fetchError || apiError) && clients.length === 0) return <Alert type="error" message={fetchError || apiError} />;
+  if (error && clients.length === 0) return <Alert type="error" message={error} />;
 
   return (
     <div className="clientsContainer">

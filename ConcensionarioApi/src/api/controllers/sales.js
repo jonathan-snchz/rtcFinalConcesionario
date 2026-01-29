@@ -41,7 +41,7 @@ const postSale = async (req, res, next) => {
         
         const car = await Car.findById(sale.car);
         if (!car) {
-            return res.status(404).json("Coche no encontrado");
+            return res.status(404).json("Vehículo no encontrado");
         }
         
         const client = await Client.findById(sale.client);

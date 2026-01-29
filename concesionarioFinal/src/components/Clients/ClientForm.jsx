@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
 import FormInput from '../FormComponents/FormInput';
+import FormActions from '../FormComponents/FormActions';
 import Alert from '../Alerts/Alert';
-import Button from '../Buttons/Button';
 import './Clients.css';
 
 const ClientForm = ({ client, onSuccess, onCancel }) => {
@@ -13,37 +13,27 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
   
   const { loading, error: serverError, get, post, put } = useApi();
   const [nextId, setNextId] = useState(null);
-  const [fetchError, setFetchError] = useState('');
+  const [formError, setFormError] = useState('');
 
-  useEffect(() => {
-    let isMounted = true;
-    
+  useEffect(() => {    
     const fetchNextId = async () => {
       if (!isEditMode) {
         try {
           const clients = await get('/clients');
-          if (isMounted) {
-            const maxId = clients.length > 0 
-              ? Math.max(...clients.map(c => c.id))
-              : 0;
-            setNextId(maxId + 1);
-            setFetchError('');
-          }
+          const maxId = clients.length > 0 
+            ? Math.max(...clients.map(c => c.id))
+            : 0;
+          setNextId(maxId + 1);
+          setFormError('');
         } catch (error) {
-          if (isMounted) {
-            console.error('Error fetching next ID:', error);
-            setNextId(1);
-            setFetchError('Error al generar ID');
-          }
+          console.error('Error fetching next ID:', error);
+          setNextId(1);
+          setFormError('Error al generar ID');
         }
       }
     };
 
     fetchNextId();
-    
-    return () => {
-      isMounted = false;
-    };
   }, [isEditMode, get]);
 
   const {
@@ -69,6 +59,8 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
 
   const onSubmit = async (formData) => {
     try {
+      setFormError('');
+      
       const url = isEditMode 
         ? `/clients/${client.id}`
         : '/clients';
@@ -85,18 +77,18 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
       
     } catch (error) {
       console.error('Submit error:', error);
-      setFetchError(error.message || 'Error al guardar el cliente');
+      setFormError(error.message || 'Error al guardar el cliente');
     }
   };
 
-  const displayError = fetchError || serverError;
+  const displayError = formError || serverError;
 
   return (
     <div className="clientFormContainer">
       <form onSubmit={handleSubmit(onSubmit)} className="clientForm">
         
         {displayError && (
-          <Alert type="error" message={displayError} />
+          <Alert type="error" message={displayError} dismissible />
         )}
 
         <div className="formSection">
@@ -112,7 +104,11 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
               placeholder="Auto-generado"
               required={true}
               readOnly={true}
-              disabled={loading || !nextId}
+              disabled={loading}
+              rules={{
+                required: 'El ID es obligatorio',
+                min: { value: 1, message: 'El ID debe ser mayor que 0' }
+              }}
             />
 
             <FormInput
@@ -125,68 +121,52 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
               required={true}
               disabled={loading}
               rules={{
-                required: 'Nombre es requerido',
-                minLength: { value: 2, message: 'Nombre debe tener al menos 2 caracteres' }
+                required: 'El nombre es obligatorio',
+                minLength: { value: 2, message: 'El nombre debe tener al menos 2 caracteres' }
               }}
             />
           </div>
 
           <div className="formRow">
-            <div className="formGroup fullWidth">
-              <FormInput
-                label="Email"
-                type="email"
-                register={register}
-                name="email"
-                errors={errors}
-                placeholder="Email del cliente"
-                required={true}
-                disabled={loading}
-                rules={{
-                  required: 'Email es requerido',
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Email inválido'
-                  }
-                }}
-              />
-            </div>
-          </div>
+            <FormInput
+              label="Email"
+              type="email"
+              register={register}
+              name="email"
+              errors={errors}
+              placeholder="Email del cliente"
+              required={true}
+              disabled={loading}
+              rules={{
+                required: 'El email es obligatorio',
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: 'Email inválido'
+                }
+              }}
+            />
 
-          <div className="formRow">
-            <div className="formGroup fullWidth">
-              <label>Preferencias</label>
+            <div className="formGroup">
+              <label>
+                Preferencias
+              </label>
               <textarea
                 {...register('preferences')}
                 disabled={loading}
                 placeholder="Preferencias del cliente"
                 rows="4"
-                className="formInput"
+                className="formTextarea"
               />
             </div>
           </div>
         </div>
 
-        <div className="formActions">
-          <Button 
-            type="submit" 
-            variant="success"
-            disabled={loading || (!isEditMode && !nextId)}
-          >
-            {loading ? 'Guardando...' : isEditMode ? 'Actualizar Cliente' : 'Agregar Cliente'}
-          </Button>
-          
-          {onCancel && (
-            <Button 
-              type="button" 
-              variant="secondary"
-              onClick={onCancel}
-              disabled={loading}
-            >
-              Cancelar
-            </Button>
-          )}
-        </div>
+        <FormActions
+          loading={loading}
+          isEditMode={isEditMode}
+          onCancel={onCancel}
+          submitText={isEditMode ? 'Actualizar Cliente' : 'Agregar Cliente'}
+        />
       </form>
     </div>
   );

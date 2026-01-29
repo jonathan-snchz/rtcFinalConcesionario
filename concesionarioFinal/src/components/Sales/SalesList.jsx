@@ -11,35 +11,22 @@ import './Sales.css';
 const SalesList = () => {
   const [sales, setSales] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [fetchError, setFetchError] = useState('');
-  const { loading, error: apiError, get } = useApi();
+  const { loading, error, get } = useApi();
   const location = useLocation();
   
   const { sortedData, requestSort, getSortIndicator } = useSort(sales, { key: 'id', direction: 'desc' });
 
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchSales = async () => {
       try {
         const data = await get('/sales');
-        if (isMounted) {
-          setSales(data);
-          setFetchError('');
-        }
+        setSales(data);
       } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching sales:', error);
-          setFetchError(error.message || 'Error al cargar las ventas');
-        }
+        console.error('Error fetching sales:', error);
       }
     };
 
     fetchSales();
-    
-    return () => {
-      isMounted = false;
-    };
   }, [get]);
 
   const filteredSales = sortedData.filter(sale => {
@@ -61,7 +48,7 @@ const SalesList = () => {
   const salesSortOptions = SALE_SORT_OPTIONS;
 
   if (loading && sales.length === 0) return <div className="loading">Cargando ventas...</div>;
-  if ((fetchError || apiError) && sales.length === 0) return <Alert type="error" message={fetchError || apiError} />;
+  if (error && sales.length === 0) return <Alert type="error" message={error} />;
 
   return (
     <div className="salesContainer">
@@ -76,7 +63,7 @@ const SalesList = () => {
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
           onClearSearch={() => setSearchTerm('')}
-          placeholder="Buscar por ID, coche, cliente o método de pago..."
+          placeholder="Buscar por ID, vehículo, cliente o método de pago..."
         />
         
         <SortControls
@@ -86,8 +73,8 @@ const SalesList = () => {
         />
       </div>
 
-      {apiError && sales.length > 0 && (
-        <Alert type="error" message={apiError} />
+      {error && sales.length > 0 && (
+        <Alert type="error" message={error} />
       )}
 
       <div className="salesList">

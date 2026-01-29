@@ -63,7 +63,7 @@ mongoose
         // Comprobamos si había y borramos
 
         if (allCars.length) {
-            console.log("Borrando coches...");
+            console.log("Borrando vehículos...");
             await Car.collection.drop();          
         }
         
@@ -115,15 +115,15 @@ mongoose
         await User.insertMany(users);
         console.log("Usuarios creados (contraseñas hasheadas)");
 
-        // Leer e insertar coches
+        // Leer e insertar vehículos
         console.log("Leyendo Vehiculos.csv...");
         const carsData = await readCSV('./src/utils/seeds/data/Vehiculos.csv');
         const cleanedCars = carsData.map(cleanCar);
         
         const insertedCars = await Car.insertMany(cleanedCars);
-        console.log("Coches insertados");
+        console.log("Vehículos insertados");
 
-        // Mapear los coches con el vin
+        // Mapear los vehículos con el vin
         const carsMap = {};
         insertedCars.forEach(car => {
             carsMap[car.vin] = car;

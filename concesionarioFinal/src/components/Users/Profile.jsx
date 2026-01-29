@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import useApi from '../../hooks/useApi';
 import PasswordModal from './PasswordModal';
+import ProfileEditForm from './ProfileEditForm';
 import Alert from '../Alerts/Alert';
 import Button from '../Buttons/Button';
 import Modal from '../Modal/Modal';
@@ -14,12 +15,12 @@ import { formatDate } from '../../utils/data';
 const Profile = () => {
   const { user: currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const { loading, error, get, del, setError, put } = useApi();
+  const { loading, error: serverError, get, del, put } = useApi();
   const [user, setUser] = useState(null);
+  const [fetchError, setFetchError] = useState('');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
-  const [editFormData, setEditFormData] = useState({ name: '', email: '' });
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -27,9 +28,10 @@ const Profile = () => {
         try {
           const data = await get(`/users/${currentUser._id}`);
           setUser(data);
-          setEditFormData({ name: data.name, email: data.email });
+          setFetchError('');
         } catch (error) {
           console.error('Error fetching user:', error);
+          setFetchError(error.message || 'Error al cargar el perfil');
         }
       }
     };
@@ -47,36 +49,50 @@ const Profile = () => {
     } catch (error) {
       console.error('Delete error:', error);
       setShowDeleteConfirm(false);
+      setFetchError(error.message || 'Error al eliminar la cuenta');
     }
   };
 
   const handlePasswordChange = async (oldPassword, newPassword) => {
-    await put(`/users/${user._id}/password`, { oldPassword, newPassword });
-    setShowPasswordModal(false);
-    setError('');
-  };
-
-  const handleSaveEdit = async () => {
     try {
-      const updatedUser = await put(`/users/${user._id}`, editFormData);
-      setUser(updatedUser);
-      setShowEditForm(false);
-      setError('');
+      await put(`/users/${user._id}/password`, { oldPassword, newPassword });
+      setShowPasswordModal(false);
+      setFetchError('');
     } catch (error) {
-      console.error('Update error:', error);
+      setFetchError(error.message || 'Error al cambiar la contraseña');
+      throw error;
     }
   };
 
+  const handleSaveEdit = async (formData) => {
+    try {
+      const updatedUser = await put(`/users/${user._id}`, formData);
+      setUser(updatedUser);
+      setShowEditForm(false);
+      setFetchError('');
+    } catch (error) {
+      console.error('Update error:', error);
+      setFetchError(error.message || 'Error al actualizar el perfil');
+    }
+  };
+
+  const handleEditCancel = () => {
+    setShowEditForm(false);
+    setFetchError('');
+  };
+
+  const displayError = fetchError || serverError;
+
   if (loading && !user) return <div className="loading">Cargando perfil...</div>;
-  if (error && !user) return <Alert type="error" message={error} />;
+  if (displayError && !user) return <Alert type="error" message={displayError} />;
   if (!user) return <div className="notFound">Usuario no encontrado</div>;
 
   return (
     <div className="profileContainer">
       <Link to="/" className="backLink">← Volver al Inicio</Link>
       
-      {error && !showDeleteConfirm && !showPasswordModal && !showEditForm && (
-        <Alert type="error" message={error} />
+      {displayError && !showDeleteConfirm && !showPasswordModal && !showEditForm && (
+        <Alert type="error" message={displayError} dismissible />
       )}
 
       <div className="profileHeader">
@@ -84,95 +100,65 @@ const Profile = () => {
       </div>
 
       <div className="userDetailContent">
-        {showEditForm ? (
-          <Modal 
-            title="Editar Perfil"
-            onClose={() => setShowEditForm(false)}
-            size="medium"
-          >
-            <div className="editFormSection">
-              <div className="formGroup">
-                <label>Nombre *</label>
-                <input
-                  type="text"
-                  value={editFormData.name}
-                  onChange={(e) => setEditFormData({...editFormData, name: e.target.value})}
-                  className="formInput"
-                  placeholder="Ingresa tu nombre"
-                />
-              </div>
-              <div className="formGroup">
-                <label>Email *</label>
-                <input
-                  type="email"
-                  value={editFormData.email}
-                  onChange={(e) => setEditFormData({...editFormData, email: e.target.value})}
-                  className="formInput"
-                  placeholder="Ingresa tu email"
-                />
-              </div>
-              <div className="profileActions">
-                <Button 
-                  variant="success"
-                  onClick={handleSaveEdit}
-                  disabled={loading}
-                >
-                  {loading ? 'Guardando...' : 'Guardar Cambios'}
-                </Button>
-                <Button 
-                  variant="secondary"
-                  onClick={() => setShowEditForm(false)}
-                  disabled={loading}
-                >
-                  Cancelar
-                </Button>
-              </div>
-            </div>
-          </Modal>
-        ) : (
-          <>
-            <InfoGrid columns={2}>
-              <InfoItem label="ID Usuario" value={user._id} />
-              <InfoItem label="Nombre" value={user.name} />
-              <InfoItem label="Email" value={user.email} />
-              <InfoItem label="Cuenta Creada">
-                {formatDate(user.createdAt)}
-              </InfoItem>
-              <InfoItem label="Última Actualización">
-                {formatDate(user.updatedAt)}
-              </InfoItem>
-            </InfoGrid>
+        <InfoGrid columns={2}>
+          <InfoItem label="ID Usuario" value={user._id} />
+          <InfoItem label="Nombre" value={user.name} />
+          <InfoItem label="Email" value={user.email} />
+          <InfoItem label="Cuenta Creada">
+            {formatDate(user.createdAt)}
+          </InfoItem>
+          <InfoItem label="Última Actualización">
+            {formatDate(user.updatedAt)}
+          </InfoItem>
+        </InfoGrid>
 
-            <div className="profileActions">
-              <Button 
-                variant="primary"
-                onClick={() => setShowEditForm(true)}
-              >
-                Editar Perfil
-              </Button>
-              <Button 
-                variant="success"
-                onClick={() => setShowPasswordModal(true)}
-              >
-                Cambiar Contraseña
-              </Button>
-              <Button 
-                variant="danger"
-                onClick={() => setShowDeleteConfirm(true)}
-              >
-                Eliminar Cuenta
-              </Button>
-            </div>
-          </>
-        )}
+        <div className="profileActions">
+          <Button 
+            variant="primary"
+            onClick={() => setShowEditForm(true)}
+            disabled={loading}
+          >
+            Editar Perfil
+          </Button>
+          <Button 
+            variant="success"
+            onClick={() => setShowPasswordModal(true)}
+            disabled={loading}
+          >
+            Cambiar Contraseña
+          </Button>
+          <Button 
+            variant="danger"
+            onClick={() => setShowDeleteConfirm(true)}
+            disabled={loading}
+          >
+            Eliminar Cuenta
+          </Button>
+        </div>
       </div>
+
+      {showEditForm && (
+        <Modal 
+          title="Editar Perfil"
+          onClose={handleEditCancel}
+          size="medium"
+        >
+          <ProfileEditForm
+            user={user}
+            onSave={handleSaveEdit}
+            onCancel={handleEditCancel}
+            loading={loading}
+            serverError={displayError}
+          />
+        </Modal>
+      )}
 
       {showDeleteConfirm && (
         <Modal
           title="¿Eliminar tu cuenta?"
           onClose={() => {
             setShowDeleteConfirm(false);
-            setError('');
+            setFetchError('');
           }}
           size="small"
         >
@@ -199,7 +185,7 @@ const Profile = () => {
                 variant="secondary"
                 onClick={() => {
                   setShowDeleteConfirm(false);
-                  setError('');
+                  setFetchError('');
                 }}
                 disabled={loading}
               >
@@ -215,10 +201,10 @@ const Profile = () => {
           onSave={handlePasswordChange}
           onCancel={() => {
             setShowPasswordModal(false);
-            setError('');
+            setFetchError('');
           }}
           loading={loading}
-          error={error}
+          error={displayError}
         />
       )}
     </div>

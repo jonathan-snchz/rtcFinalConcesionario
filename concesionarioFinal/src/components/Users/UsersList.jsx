@@ -11,34 +11,21 @@ import './Users.css';
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [fetchError, setFetchError] = useState('');
-  const { loading, error: apiError, get } = useApi();
+  const { loading, error, get } = useApi();
   
   const { sortedData, requestSort, getSortIndicator } = useSort(users, { key: 'name', direction: 'asc' });
 
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchUsers = async () => {
       try {
         const data = await get('/users');
-        if (isMounted) {
-          setUsers(data);
-          setFetchError('');
-        }
+        setUsers(data);
       } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching users:', error);
-          setFetchError(error.message || 'Error al cargar los usuarios');
-        }
+        console.error('Error fetching users:', error);
       }
     };
 
     fetchUsers();
-    
-    return () => {
-      isMounted = false;
-    };
   }, [get]);
 
   const filteredUsers = sortedData.filter(user => 
@@ -51,7 +38,7 @@ const UsersList = () => {
   const userSortOptions = USER_SORT_OPTIONS;
 
   if (loading && users.length === 0) return <div className="loading">Cargando usuarios...</div>;
-  if ((fetchError || apiError) && users.length === 0) return <Alert type="error" message={fetchError || apiError} />;
+  if (error && users.length === 0) return <Alert type="error" message={error} />;
 
   return (
     <div className="usersContainer">

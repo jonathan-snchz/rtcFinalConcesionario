@@ -6,7 +6,7 @@ async function getCars(req, res, next) {
     const cars = await Car.find();
     return res.status(200).json(cars);
   } catch (error) {
-    return res.status(400).json("Error al recuperar los coches: " + error.message);
+    return res.status(400).json("Error al recuperar los vehículos: " + error.message);
   }
 }
 
@@ -16,12 +16,12 @@ async function getCarByVin(req, res, next) {
     const car = await Car.findOne({ vin });
     
     if (!car) {
-      return res.status(404).json("Coche no encontrado");
+      return res.status(404).json("Vehículo no encontrado");
     }
     
     return res.status(200).json(car);
   } catch (error) {
-    return res.status(400).json("Error buscando el coche: " + error.message);
+    return res.status(400).json("Error buscando el vehículo: " + error.message);
   }
 }
 
@@ -62,7 +62,7 @@ async function postCar(req, res, next) {
       }
     }
     
-    return res.status(400).json("Error creando el coche: " + error.message);
+    return res.status(400).json("Error creando el vehículo: " + error.message);
   }
 }
 
@@ -81,7 +81,7 @@ async function updateCar(req, res, next) {
           console.error('Error borrando la imagen:', deleteError);
         }
       }
-      return res.status(404).json("Coche no encontrado");
+      return res.status(404).json("Vehículo no encontrado");
     }
     
     if (req.file) {
@@ -124,7 +124,7 @@ async function updateCar(req, res, next) {
       }
     }
     
-    return res.status(400).json("Error actualizando el coche: " + error.message);
+    return res.status(400).json("Error actualizando el vehículo: " + error.message);
   }
 }
 
@@ -134,7 +134,7 @@ async function deleteCar(req, res, next) {
     const car = await Car.findOne({ vin });
     
     if (!car) {
-      return res.status(404).json("Coche no encontrado");
+      return res.status(404).json("Vehículo no encontrado");
     }
     
     if (car.img) {
@@ -142,15 +142,14 @@ async function deleteCar(req, res, next) {
         await deleteApiImg(car.img);
       } catch (deleteError) {
         console.error('Error borrando la imagen:', deleteError);
-        // Continue with car deletion even if image deletion fails
       }
     }
     
     await Car.findOneAndDelete({ vin });
     
-    return res.status(200).json(`Coche eliminado: ${vin}`);
+    return res.status(200).json(`Vehículo eliminado: ${vin}`);
   } catch (error) {
-    return res.status(400).json("Error eliminando el coche: " + error.message);
+    return res.status(400).json("Error eliminando el vehículo: " + error.message);
   }
 }
 

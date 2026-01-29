@@ -12,8 +12,9 @@ import './Sales.css';
 const SaleDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { loading, error, get, del, setError } = useApi();
+  const { loading, error: apiError, get, del } = useApi();
   const [sale, setSale] = useState(null);
+  const [fetchError, setFetchError] = useState('');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
@@ -21,12 +22,15 @@ const SaleDetail = () => {
       try {
         const data = await get(`/sales/${id}`);
         setSale(data);
-      } catch (err) {
-        console.error('Error fetching sale:', err);
+        setFetchError('');
+      } catch (error) {
+        console.error('Error fetching sale:', error);
+        setFetchError(error.message || 'Error al cargar la venta');
       }
     };
 
     fetchSale();
+    
   }, [id, get]);
 
   const handleDelete = async () => {
@@ -36,21 +40,24 @@ const SaleDetail = () => {
         state: { message: 'Venta eliminada exitosamente' }
       });
     } catch (error) {
+      console.error('Error al eliminar:', error);
       setShowDeleteConfirm(false);
-      console.log('Error al eliminar:', error);
+      setFetchError(error.message || 'Error al eliminar la venta');
     }
   };
 
+  const displayError = fetchError || apiError;
+
   if (loading && !sale) return <div className="loading">Cargando detalles de la venta...</div>;
-  if (error && !sale) return <Alert type="error" message={error} />;
+  if (displayError && !sale) return <Alert type="error" message={displayError} />;
   if (!sale) return <div className="notFound">Venta no encontrada</div>;
 
   return (
     <div className="saleDetailContainer">
       <Link to="/sales" className="backLink">← Volver a Ventas</Link>
       
-      {error && !showDeleteConfirm && (
-        <Alert type="error" message={error} />
+      {displayError && !showDeleteConfirm && (
+        <Alert type="error" message={displayError} dismissible />
       )}
 
       <div className="saleDetailHeader">
@@ -59,14 +66,16 @@ const SaleDetail = () => {
           <Button 
             variant="primary"
             onClick={() => navigate(`/sales/${id}/edit`)}
+            disabled={loading}
           >
             Editar
           </Button>
           <Button 
             variant="danger"
             onClick={() => setShowDeleteConfirm(true)}
+            disabled={loading}
           >
-            Eliminar
+            {loading ? 'Eliminando...' : 'Sí, Eliminar'}
           </Button>
         </div>
       </div>
@@ -90,7 +99,7 @@ const SaleDetail = () => {
         </div>
         
         <div className="carPreview">
-          <h4>Información del Coche</h4>
+          <h4>Información del Vehículo</h4>
           {sale.car ? (
             <>
               <p><strong>{sale.car.brand} {sale.car.model} ({sale.car.year})</strong></p>
@@ -100,11 +109,11 @@ const SaleDetail = () => {
                 </span></p>
               <p>Precio: {formatCurrency(sale.car.price)}</p>
               <Link to={`/cars/${sale.car.vin}`} className="backLink">
-                Ver detalles del coche →
+                Ver detalles del vehículo →
               </Link>
             </>
           ) : (
-            <p>Información del coche no disponible</p>
+            <p>Información del vehículo no disponible</p>
           )}
         </div>
 
@@ -142,7 +151,7 @@ const SaleDetail = () => {
           title="¿Eliminar esta venta?"
           onClose={() => {
             setShowDeleteConfirm(false);
-            setError('');
+            setFetchError('');
           }}
           size="small"
         >
@@ -171,7 +180,7 @@ const SaleDetail = () => {
                 variant="secondary"
                 onClick={() => {
                   setShowDeleteConfirm(false);
-                  setError('');
+                  setFetchError('');
                 }}
                 disabled={loading}
               >

@@ -1,108 +1,113 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import FormInput from '../FormComponents/FormInput';
+import FormActions from '../FormComponents/FormActions';
 import Alert from '../Alerts/Alert';
-import Button from '../Buttons/Button';
+import './Register.css';
 
 const RegisterForm = ({ onSubmit, serverError, isSubmitting }) => {
-  const { isAuthenticated } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    }
   });
 
   const handleFormSubmit = (data) => {
     onSubmit(data.name, data.email, data.password);
   };
 
-  const title = isAuthenticated ? 'Add New User' : 'Register';
-  const submitText = isAuthenticated ? 'Add User' : 'Register';
-
   return (
-    <div className="registerCard">
-      <div className="registerHeader">
-        <h2>{title}</h2>
-        <p>{isAuthenticated ? 'Create a new user account' : 'Create a new account'}</p>
+    <div className="registerContainer">
+      <div className="registerCard">
+        <div className="registerHeader">
+          <h2>Registrar nuevo usuario</h2>
+          <p>Añadir un nuevo compañero</p>
+        </div>
+
+        {serverError && (
+          <Alert type="error" message={serverError} dismissible />
+        )}
+
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="registerForm">
+          <div className="formSection">
+            <h3>Información del Usuario</h3>
+            
+            <div className="formRow">
+              <FormInput
+                label="Nombre"
+                type="text"
+                register={register}
+                name="name"
+                errors={errors}
+                placeholder="Introduce un nombre"
+                required={true}
+                disabled={isSubmitting}
+                rules={{
+                  required: 'Hace falta un nombre',
+                  minLength: {
+                    value: 2,
+                    message: 'El nombre debe tener al menos 2 caracteres'
+                  }
+                }}
+              />
+            </div>
+
+            <div className="formRow">
+              <FormInput
+                label="Email"
+                type="email"
+                register={register}
+                name="email"
+                errors={errors}
+                placeholder="Introduce un email"
+                required={true}
+                disabled={isSubmitting}
+                rules={{
+                  required: 'Hace falta un correo',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'El correo no es válido'
+                  }
+                }}
+              />
+            </div>
+
+            <div className="formRow">
+              <FormInput
+                label="Contraseña"
+                type="password"
+                register={register}
+                name="password"
+                errors={errors}
+                placeholder="Introduce la contraseña"
+                required={true}
+                disabled={isSubmitting}
+                rules={{
+                  required: 'Hace falta una contraseña',
+                  minLength: {
+                    value: 4,
+                    message: 'La contraseña debe tener al menos 4 caracteres'
+                  }
+                }}
+              />
+            </div>
+          </div>
+
+          <FormActions
+            loading={isSubmitting}
+            isEditMode={false}
+            onCancel={null}
+            submitText={isSubmitting ? 'Añadiendo...' : 'Registrar'}
+            showCancel={false}
+          />
+        </form>
       </div>
-
-      {serverError && (
-        <Alert type="error" message={serverError} />
-      )}
-
-      <form onSubmit={handleSubmit(handleFormSubmit)} className="registerForm">
-        <div className="formGroup">
-          <label>Name</label>
-          <input
-            type="text"
-            placeholder="Enter name"
-            className={`formInput ${errors.name ? 'error' : ''}`}
-            {...register('name', {
-              required: 'Name is required',
-            })}
-            disabled={isSubmitting}
-          />
-          {errors.name && <span className="errorMessage">{errors.name.message}</span>}
-        </div>
-
-        <div className="formGroup">
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Enter email"
-            className={`formInput ${errors.email ? 'error' : ''}`}
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Please enter a valid email address',
-              },
-            })}
-            disabled={isSubmitting}
-          />
-          {errors.email && <span className="errorMessage">{errors.email.message}</span>}
-        </div>
-
-        <div className="formGroup">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            className={`formInput ${errors.password ? 'error' : ''}`}
-            {...register('password', {
-              required: 'Password is required',
-              minLength: {
-                value: 4,
-                message: 'Password must be at least 4 characters',
-              },
-            })}
-            disabled={isSubmitting}
-          />
-          {errors.password && <span className="errorMessage">{errors.password.message}</span>}
-        </div>
-
-        <Button 
-          type="submit" 
-          variant="success"
-          disabled={isSubmitting}
-          className="registerButton"
-        >
-          {isSubmitting ? 'Processing...' : submitText}
-        </Button>
-      </form>
-
-      {!isAuthenticated && (
-        <div className="registerFooter">
-          <p>
-            Already have an account?{' '}
-            <Link to="/login" className="registerLink">
-              Login
-            </Link>
-          </p>
-        </div>
-      )}
     </div>
   );
 };
