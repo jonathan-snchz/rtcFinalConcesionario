@@ -5,7 +5,7 @@ Proyecto final para la escuela **RockTheCode**, donde se desarrolla una aplicaci
 
 La aplicación permite administrar vehículos, clientes y ventas, relacionandolos entre sí, además de contar con una colección de usuarios para el acceso a la plataforma.
 
-El proyecto está desarrollado principalmente con **Node.js, Express y MongoDB** en el backend, y **React** en el frontend. Además se utilizan librerías como **bcrypt** para la seguridad de contraseñas y **Cloudinary** para la gestión de imágenes.
+El proyecto está desarrollado principalmente con **Node.js, Express y MongoDB** en el backend, y **React** en el frontend. También se usa **bcrypt** para la seguridad de contraseñas y **Cloudinary** para la gestión de imágenes.
 
 ---
 
@@ -199,39 +199,6 @@ Colecciones principales:
 
 ---
 
-## Instalación y Configuración
-
-### Backend
-
-1. Acceder a la carpeta del backend
-2. Instalar dependencias  
-   npm install
-3. Configurar el archivo `.env`
-4. Ejecutar el seed para poblar la base de datos
-   npm run seed
-5. Iniciar el servidor  
-   npm run dev
-
-### Frontend
-
-1. Acceder a la carpeta del frontend
-2. Instalar dependencias  
-   npm install
-3. Iniciar la aplicación  
-   npm run dev
-
----
-
-## Usuarios de Prueba
-
-En el seed crean usuarios de prueba con las siguientes credenciales:
-
-manuel@concesionario.com / manuel123  
-jose@concesionario.com / jose123  
-maria@concesionario.com / maria123  
-
----
-
 ## Tecnologías Utilizadas
 
 ### Backend
@@ -297,5 +264,38 @@ maria@concesionario.com / maria123
 1. **Autenticación JWT** - Tokens firmados con secreto
 2. **Contraseñas hasheadas** - Encriptación con bcrypt
 3. **Protección de rutas** - Middleware de autenticación
+
+---
+
+## Instalación y Configuración
+
+### Backend
+
+1. Acceder a la carpeta del backend
+2. Instalar dependencias  
+   npm install
+3. Configurar el archivo `.env`
+4. Ejecutar el seed para poblar la base de datos
+   npm run seed
+5. Iniciar el servidor  
+   npm run dev
+
+### Frontend
+
+1. Acceder a la carpeta del frontend
+2. Instalar dependencias  
+   npm install
+3. Iniciar la aplicación  
+   npm run dev
+
+---
+
+## Usuarios de Prueba
+
+En el seed crean usuarios de prueba con las siguientes credenciales:
+
+manuel@concesionario.com / manuel123  
+jose@concesionario.com / jose123  
+maria@concesionario.com / maria123  
 
 ---
