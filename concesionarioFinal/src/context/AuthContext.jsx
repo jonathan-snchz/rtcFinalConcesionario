@@ -2,6 +2,8 @@
 import { createContext, useContext, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const apiURL = import.meta.env.VITE_API_URL
+
 const AuthContext = createContext({
   user: null,
   isAuthenticated: false,
@@ -34,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 const login = useCallback(async (email, password) => {
   try {
     const response = await fetch(
-      'http://localhost:3000/api/v1/users/login',
+      `${apiURL}/users/login`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

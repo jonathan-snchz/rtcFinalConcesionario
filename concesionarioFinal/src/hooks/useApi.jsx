@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const apiUrl = 'http://localhost:3000/api/v1';
+const apiUrl = import.meta.vite.ENV.VITE_API_URL;
 
 const useApi = () => {
   const [loading, setLoading] = useState(false);
