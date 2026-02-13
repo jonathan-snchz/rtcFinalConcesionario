@@ -95,7 +95,7 @@ const CarDetail = () => {
             variant="danger"
             onClick={() => setShowDeleteConfirm(true)}
           >
-            {loading ? 'Eliminando...' : 'Sí, Eliminar'}
+          Eliminar
           </Button>
         </div>
       </div>
