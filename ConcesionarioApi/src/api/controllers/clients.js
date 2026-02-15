@@ -12,7 +12,7 @@ const getClients = async (req, res, next) => {
 const getClientById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const client = await Client.findOne({ id: id });
+        const client = await Client.findOne({ id: parseInt(id) });
         
         if (!client) {
             return res.status(404).json("Cliente no encontrado");
@@ -26,23 +26,25 @@ const getClientById = async (req, res, next) => {
 
 const postClient = async (req, res, next) => {
     try {
-        const client = req.body;
+        const clientData = req.body;
         
-        const clientExist = await Client.findOne({ 
-            $or: [
-                { id: client.id },
-                { email: client.email }
-            ]
-        });
-        
-        if (clientExist) {
-            return res.status(400).json("El cliente ya existe");
+        const emailExist = await Client.findOne({ email: clientData.email });
+        if (emailExist) {
+            return res.status(400).json("El email ya está registrado");
         }
         
-        const newClient = new Client(client);
+        const lastClient = await Client.findOne().sort({ id: -1 });
+        const nextId = lastClient ? lastClient.id + 1 : 1;
+        
+        const newClient = new Client({
+            ...clientData,
+            id: nextId
+        });
+        
         const clientSaved = await newClient.save();
         return res.status(201).json(clientSaved);
     } catch (error) {
+        console.error(error);
         return res.status(400).json("Error registrando el cliente");
     }
 }
@@ -52,8 +54,19 @@ const updateClient = async (req, res, next) => {
         const { id } = req.params;
         const clientUpdates = req.body;
         
+        if (clientUpdates.email) {
+            const existingClient = await Client.findOne({ 
+                email: clientUpdates.email,
+                id: { $ne: parseInt(id) }
+            });
+            
+            if (existingClient) {
+                return res.status(400).json("El email ya está registrado por otro cliente");
+            }
+        }
+        
         const updatedClient = await Client.findOneAndUpdate(
-            { id: id },
+            { id: parseInt(id) },
             clientUpdates,
             { new: true }
         );
@@ -71,7 +84,15 @@ const updateClient = async (req, res, next) => {
 const deleteClient = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const clientDeleted = await Client.findOneAndDelete({ id: id });
+        
+        const Sale = require('../models/sales');
+        const hasSales = await Sale.findOne({ client: id });
+        
+        if (hasSales) {
+            return res.status(400).json("No se puede eliminar el cliente porque tiene ventas asociadas");
+        }
+        
+        const clientDeleted = await Client.findOneAndDelete({ id: parseInt(id) });
         
         if (!clientDeleted) {
             return res.status(404).json("Cliente no encontrado");

@@ -34,28 +34,38 @@ const postSale = async (req, res, next) => {
     try {
         const sale = req.body;
         
-        const saleExist = await Sale.findOne({ id: sale.id });
-        if (saleExist) {
-            return res.status(400).json("La venta ya existe");
-        }
-        
+        const lastSale = await Sale.findOne().sort({ id: -1 });
+        const nextId = await lastSale ? lastSale + 1: 1;
+
         const car = await Car.findById(sale.car);
         if (!car) {
             return res.status(404).json("Vehículo no encontrado");
         }
         
+        if (car.availability !== 'disponible'){
+            return res.status(400).json("Vehículo no está disponible")
+        }
+
         const client = await Client.findById(sale.client);
         if (!client) {
             return res.status(404).json("Cliente no encontrado");
         }
         
-        const newSale = new Sale(sale);
+        const newSale = new Sale({
+            ...sale,
+            id: nextId, 
+        });
         const saleSaved = await newSale.save();
         
         await Car.findByIdAndUpdate(sale.car, { availability: 'vendido' });
         
-        return res.status(201).json(saleSaved);
+        const populatedSale = await Sale.findById(saleSaved._id)
+            .populate('car')
+            .populate('client');
+        
+        return res.status(201).json(populatedSale);
     } catch (error) {
+        console.error(error);
         return res.status(400).json("Error registrando la venta");
     }
 }
