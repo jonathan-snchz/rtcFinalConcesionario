@@ -8,9 +8,7 @@ const Sale = require('../../api/models/sales')
 const User = require('../../api/models/users')
 const mongoose = require('mongoose');
 
-
-// Arreglar los datos del csv
-
+// Limpiar datos de vehículos del CSV
 const cleanCar = (row) => {
     return {
         vin: row['Número de identificación del vehículo (VIN)'].trim(),
@@ -24,7 +22,7 @@ const cleanCar = (row) => {
         buyedWhen: new Date(row['Fecha de adquisición']),
         availability: row['Estado del vehículo'].toLowerCase().trim(),
         img: row['Imagen'].trim(),
-        color: row['Color'].replace('(', 'rgb(').replace(/\./g, ', ').replace(')', ')')  
+        color: row['Color'].trim()  
     }
 }
 
@@ -38,7 +36,6 @@ const cleanClient = (row) => {
 }
 
 // Leer el csv
-
 const readCSV = (file) => {
     return new Promise((resolve, reject) => {
         const results = [];
@@ -52,7 +49,6 @@ mongoose
         console.log("Conectado a la base de datos");        
         
         // Buscamos todos los datos
-        
         const allCars = await Car.find();
         const allClients = await Client.find();
         const allSales = await Sale.find();
@@ -61,7 +57,6 @@ mongoose
         console.log("Datos encontrados");
         
         // Comprobamos si había y borramos
-
         if (allCars.length) {
             console.log("Borrando vehículos...");
             await Car.collection.drop();          
@@ -170,9 +165,6 @@ mongoose
         console.log("Base de datos poblada exitosamente!");
     })
     .catch((error) => console.log(`Error poblando datos: ${error}`))
-
-    // Desconectamos
-    
     .finally(() => {
         console.log("Desconectando, adiós!");
         mongoose.disconnect();

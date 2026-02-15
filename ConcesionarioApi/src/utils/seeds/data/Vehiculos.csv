@@ -1,23 +1,101 @@
 Número de identificación del vehículo (VIN),Marca,Modelo,Tipo de vehículo,Año de fabricación,Kilometraje,Estado,Precio de venta,Fecha de adquisición,Estado del vehículo,Imagen,Color
-KM8SRDHF7FU123456,Hyundai,Tucson,Turismo,2020,0 km,Nuevo,$25.800,2021-01-16,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Hyundai_Tucson_2020_IMG_1100.jpg/320px-Hyundai_Tucson_2020_IMG_1100.jpg,rojo
-1GYS4JKJ6HR123456,Cadillac,Escalade,Turismo,2018,40.000 km,Usado,$48.500,2021-01-16,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/2018_Cadillac_Escalade_1.jpg/320px-2018_Cadillac_Escalade_1.jpg,verde
-KM8SRDHF7FU1234,Hyundai,Tucson,Turismo,2020,0 km,Nuevo,$25.800,2021-01-16,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Hyundai_Tucson_2020_IMG_1100.jpg/320px-Hyundai_Tucson_2020_IMG_1100.jpg,azul
-5TDZARFH2ES123456,Toyota,Sienna,Turismo,2014,70.000 km,Usado,$19.500,2021-02-02,Reservado,https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/2014_Toyota_Sienna_XLE_Front.jpg/320px-2014_Toyota_Sienna_XLE_Front.jpg,amarillo
-5TDZARFH2ES123256,Toyota,Sienna,Turismo,2014,70.000 km,Usado,$19.500,2021-02-02,Reservado,https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/2014_Toyota_Sienna_XLE_Front.jpg/320px-2014_Toyota_Sienna_XLE_Front.jpg,magenta
-2GKALSEK7G6123456,GMC,Terrain,Turismo,2016,60.000 km,Usado,$21.700,2021-03-21,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/2016_GMC_Terrain_SLE_front_6.10.18.jpg/320px-2016_GMC_Terrain_SLE_front_6.10.18.jpg,cian
-2GKALSCK7G6123456,GMC,Terrain,Turismo,2016,60.000 km,Usado,$21.700,2021-03-21,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/2016_GMC_Terrain_SLE_front_6.10.18.jpg/320px-2016_GMC_Terrain_SLE_front_6.10.18.jpg,rojo
-1HGCR2F34FA123456,Honda,Accord,Turismo,2015,50.000 km,Usado,$18.200,2021-04-09,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/2015_Honda_Accord_EX_L_Sedan_%28cropped%29.jpg/320px-2015_Honda_Accord_EX_L_Sedan_%28cropped%29.jpg,verde
-1HGCR2F3NVV123456,Honda,Accord,Turismo,2015,50.000 km,Usado,$18.200,2021-04-09,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/2015_Honda_Accord_EX_L_Sedan_%28cropped%29.jpg/320px-2015_Honda_Accord_EX_L_Sedan_%28cropped%29.jpg,azul
-1GNKVJKD0DJ123456,Chevrolet,Traverse,Turismo,2013,80.000 km,Usado,$16.500,2021-05-27,Vendido,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/2013_Chevrolet_Traverse_LTZ_Front.jpg/320px-2013_Chevrolet_Traverse_LTZ_Front.jpg,amarillo
-1GNKVJKD0123456,Chevrolet,Traverse,Turismo,2013,80.000 km,Usado,$16.500,2021-05-27,Vendido,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/2013_Chevrolet_Traverse_LTZ_Front.jpg/320px-2013_Chevrolet_Traverse_LTZ_Front.jpg,magenta
-1FMCU0G94EUC12345,Ford,Escape,Turismo,2014,40.000 km,Usado,$14.700,2021-06-14,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2014_Ford_Escape_Titanium_Front.jpg/320px-2014_Ford_Escape_Titanium_Front.jpg,cian
-1FVMU0G94EUC12345,Ford,Escape,Turismo,2014,40.000 km,Usado,$14.700,2021-06-14,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2014_Ford_Escape_Titanium_Front.jpg/320px-2014_Ford_Escape_Titanium_Front.jpg,naranja
-5NPD84LF2JH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/2018_Hyundai_Elantra_SE_Front.jpg/320px-2018_Hyundai_Elantra_SE_Front.jpg,magenta
-5NMV84LF2JH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/2018_Hyundai_Elantra_SE_Front.jpg/320px-2018_Hyundai_Elantra_SE_Front.jpg,verde
-584LF2NVMJH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/2018_Hyundai_Elantra_SE_Front.jpg/320px-2018_Hyundai_Elantra_SE_Front.jpg,cian
-2HKRM3H70GH123456,Honda,CR-V,Turismo,2016,45.000 km,Usado,$19.300,2021-08-19,Reservado,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/2016_Honda_CR-V_EX-L_Front.jpg/320px-2016_Honda_CR-V_EX-L_Front.jpg,magenta
-1C4PJLDS3FW123456,Jeep,Cherokee,Turismo,2015,30.000 km,Usado,$17.800,2021-09-05,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/2015_Jeep_Cherokee_Latitude_Front.jpg/320px-2015_Jeep_Cherokee_Latitude_Front.jpg,azul
-1HGCP26369A123456,Honda,Accord,Turismo,2009,90.000 km,Usado,$8.900,2021-10-23,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/2009_Honda_Accord_EX-L.jpg/320px-2009_Honda_Accord_EX-L.jpg,rosa
-2T3BF4DV0BW123456,Toyota,RAV4,Turismo,2011,70.000 km,Usado,$12.500,2021-11-11,Reservado,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2011_Toyota_RAV4_Front.jpg/320px-2011_Toyota_RAV4_Front.jpg,verde
-1FMZU73K53UA12345,Ford,Explorer,Turismo,2003,85.000 km,Usado,$6.800,2021-12-30,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2003_Ford_Explorer.jpg/320px-2003_Ford_Explorer.jpg,azul
-WBA5A5C54FD123456,BMW,5 Series,Turismo,2018,25.000 km,Usado,$32.000,2022-01-16,Disponible,https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2018_BMW_5_Series_530i.jpg/320px-2018_BMW_5_Series_530i.jpg,rojo
+KM8SRDHF7FU123456,Hyundai,Tucson,Turismo,2020,0 km,Nuevo,$25.800,2021-01-16,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rojo
+1GYS4JKJ6HR123456,Cadillac,Escalade,Turismo,2018,40.000 km,Usado,$48.500,2021-01-16,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+KM8SRDHF7FU1234,Hyundai,Tucson,Turismo,2020,0 km,Nuevo,$25.800,2021-01-16,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+5TDZARFH2ES123456,Toyota,Sienna,Turismo,2014,70.000 km,Usado,$19.500,2021-02-02,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Amarillo
+5TDZARFH2ES123256,Toyota,Sienna,Turismo,2014,70.000 km,Usado,$19.500,2021-02-02,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Magenta
+2GKALSEK7G6123456,GMC,Terrain,Turismo,2016,60.000 km,Usado,$21.700,2021-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Cian
+2GKALSCK7G6123456,GMC,Terrain,Turismo,2016,60.000 km,Usado,$21.700,2021-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Marrón
+1HGCR2F34FA123456,Honda,Accord,Turismo,2015,50.000 km,Usado,$18.200,2021-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+1HGCR2F3NVV123456,Honda,Accord,Turismo,2015,50.000 km,Usado,$18.200,2021-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1GNKVJKD0DJ123456,Chevrolet,Traverse,Turismo,2013,80.000 km,Usado,$16.500,2021-05-27,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+1GNKVJKD0123456,Chevrolet,Traverse,Turismo,2013,80.000 km,Usado,$16.500,2021-05-27,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+1FMCU0G94EUC12345,Ford,Escape,Turismo,2014,40.000 km,Usado,$14.700,2021-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+1FVMU0G94EUC12345,Ford,Escape,Turismo,2014,40.000 km,Usado,$14.700,2021-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+5NPD84LF2JH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+5NMV84LF2JH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+584LF2NVMJH123456,Hyundai,Elantra,Turismo,2018,55.000 km,Usado,$16.000,2021-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2HKRM3H70GH123456,Honda,CR-V,Turismo,2016,45.000 km,Usado,$19.300,2021-08-19,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+1C4PJLDS3FW123456,Jeep,Cherokee,Turismo,2015,30.000 km,Usado,$17.800,2021-09-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1HGCP26369A123456,Honda,Accord,Turismo,2009,90.000 km,Usado,$8.900,2021-10-23,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+2T3BF4DV0BW123456,Toyota,RAV4,Turismo,2011,70.000 km,Usado,$12.500,2021-11-11,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+1FMZU73K53UA12345,Ford,Explorer,Turismo,2003,85.000 km,Usado,$6.800,2021-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+WBA5A5C54FD123456,BMW,5 Series,Turismo,2018,25.000 km,Usado,$32.000,2022-01-16,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rojo
+WBA5A5C54PD123456,BMW,5 Series,Turismo,2018,25.000 km,Usado,$32.000,2022-01-16,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5LMCJ2D96FUJ12345,Lincoln,MKC,Turismo,2015,65.000 km,Usado,$18.200,2022-02-02,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+5LMCJ2D96FRJ12345,Lincoln,MKC,Turismo,2015,65.000 km,Usado,$18.200,2022-02-02,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Amarillo
+1FADP3J20HL123456,Ford,Focus,Turismo,2017,30.000 km,Usado,$12.300,2022-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Magenta
+1FADP3J20UL123456,Ford,Focus,Turismo,2017,30.000 km,Usado,$12.300,2022-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Cian
+2GNAXUEV9K1234567,Chevrolet,Equinox,Turismo,2020,0 km,Nuevo,$27.500,2022-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+2GNAXUEV9LC1234567,Chevrolet,Equinox,Turismo,2020,0 km,Nuevo,$27.500,2022-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+WAUZZZ8V6EA123456,Audi,Q5,Turismo,2014,55.000 km,Usado,$21.000,2022-05-27,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+WAUZZZ8V6AJA123456,Audi,Q5,Turismo,2014,55.000 km,Usado,$21.000,2022-05-27,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+JTEBU5JR8G1234567,Toyota,4Runner,Turismo,2016,40.000 km,Usado,$29.500,2022-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+JTEBIFA5JR8G1234567,Toyota,4Runner,Turismo,2016,40.000 km,Usado,$29.500,2022-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1HGCV1F3XEA123456,Honda,Accord,Turismo,2014,70.000 km,Usado,$15.800,2022-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1HGCV1F3CVA123456,Honda,Accord,Turismo,2014,70.000 km,Usado,$15.800,2022-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5J6RM4H71GL123456,Honda,HR-V,Turismo,2016,45.000 km,Usado,$17.000,2022-08-19,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+5J6RJCV4H71GL123456,Honda,HR-V,Turismo,2016,45.000 km,Usado,$17.000,2022-08-19,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Marrón
+3D73Y4CL5AG123456,Ram,2500,Turismo,2010,80.000 km,Usado,$24.000,2022-09-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+3D73Y4CL5VKJG123456,Ram,2500,Turismo,2010,80.000 km,Usado,$24.000,2022-09-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+2HNYD2H22CH123456,Acura,RDX,Turismo,2012,60.000 km,Usado,$19.500,2022-10-23,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+2HNYD2H22VKLMH123456,Acura,RDX,Turismo,2012,60.000 km,Usado,$19.500,2022-10-23,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+1ZVBP8AM9E5323456,Ford,Shelby GT500,Turismo,2014,25.000 km,Usado,$41.000,2022-11-11,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+1ZVBP8AMCVJ5323456,Ford,Shelby GT500,Turismo,2014,25.000 km,Usado,$41.000,2022-11-11,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+5TDBK3EHXCS123456,Toyota,Highlander,Turismo,2012,70.000 km,Usado,$20.700,2022-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rojo
+5TDBK3VKMXCS123456,Toyota,Highlander,Turismo,2012,70.000 km,Usado,$20.700,2022-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2GKALSEK5E6123456,GMC,Terrain,Turismo,2014,55.000 km,Usado,$18.000,2023-01-16,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2GKKCLSEK5E6123456,GMC,Terrain,Turismo,2014,55.000 km,Usado,$18.000,2023-01-16,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+1HGCR2F38EA123456,Honda,Civic,Turismo,2014,35.000 km,Usado,$14.200,2023-02-02,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1HGCR2F38MBVA123456,Honda,Civic,Turismo,2014,35.000 km,Usado,$14.200,2023-02-02,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+3LN6L2G99ER123456,Lincoln,MKZ,Turismo,2014,40.000 km,Usado,$16.500,2023-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+3LN6L2G99NVBB123456,Lincoln,MKZ,Turismo,2014,40.000 km,Usado,$16.500,2023-03-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+5N1AT2MTXFC123456,Nissan,Rogue,Turismo,2015,50.000 km,Usado,$18.900,2023-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Marrón
+5N1AT2MTXC123456,Nissan,Rogue,Turismo,2015,50.000 km,Usado,$18.900,2023-04-09,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+1GKS2HKJ1GR123456,GMC,Yukon,Turismo,2016,65.000 km,Usado,$33.500,2023-05-27,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+1GKS2HKJ1R123456,GMC,Yukon,Turismo,2016,65.000 km,Usado,$33.500,2023-05-27,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+2C3CDZAG8CH123456,Dodge,Challenger,Turismo,2012,80.000 km,Usado,$23.000,2023-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+2C3CDZAG8C123456,Dodge,Challenger,Turismo,2012,80.000 km,Usado,$23.000,2023-06-14,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+JTNB11HK6JH123456,Toyota,Prius,Turismo,2018,30.000 km,Usado,$17.800,2023-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+JTNB11HK6H123456,Toyota,Prius,Turismo,2018,30.000 km,Usado,$17.800,2023-07-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+JH4DC53014C012345,Acura,MDX,Turismo,2016,55.000 km,Usado,$22.500,2023-08-12,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5XYZU3LB6GG123456,Hyundai,Santa Fe,Turismo,2016,55.000 km,Usado,$20.500,2023-08-19,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+5XYZU3LB6G123456,Hyundai,Santa Fe,Turismo,2016,55.000 km,Usado,$20.500,2023-08-19,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+5NPD84LF6JH123456,Hyundai,Elantra,Turismo,2019,30.000 km,Usado,$13.200,2023-09-02,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1FTFW1ET9EFD12345,Ford,F-150,Turismo,2014,45.000 km,Usado,$27.000,2023-09-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+1FTFW1ET9D12345,Ford,F-150,Turismo,2014,45.000 km,Usado,$27.000,2023-09-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1FAFP48Y83F301234,Ford,Mustang,Turismo,2003,90.000 km,Usado,$8.500,2023-10-17,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5TDBK3EH9CS123456,Toyota,Highlander,Turismo,2015,40.000 km,Usado,$23.500,2023-10-23,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5TDBK39CS123456,Toyota,Highlander,Turismo,2015,40.000 km,Usado,$23.500,2023-10-23,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+WDDUG8CBXEA123456,Mercedes,S-Class,Turismo,2014,70.000 km,Usado,$30.000,2023-11-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+WDDRG8CBXEA123456,Mercedes,S-Class,Turismo,2014,70.000 km,Usado,$30.000,2023-11-05,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+1G1BE5SM6G7246789,Chevrolet,Malibu,Turismo,2016,35.000 km,Usado,$16.900,2023-11-11,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1G1BE5SM6G7267789,Chevrolet,Malibu,Turismo,2016,35.000 km,Usado,$16.900,2023-11-11,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+2C3CDXJG5KH123456,Dodge,Charger,Turismo,2020,0 km,Nuevo,$32.800,2023-12-20,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2C3CDXPG5KH123456,Dodge,Charger,Turismo,2020,0 km,Nuevo,$32.800,2023-12-20,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+2HKRM4H73EH123456,Honda,CR-V,Turismo,2017,25.000 km,Usado,$22.300,2023-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+2HKRM4H73EH12456,Honda,CR-V,Turismo,2017,25.000 km,Usado,$22.300,2023-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+1C4RJFBG8EC123456,Jeep,Grand Cherokee,Turismo,2016,50.000 km,Usado,$19.800,2024-01-08,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1C4RJWBG8EC123456,Jeep,Grand Cherokee,Turismo,2016,50.000 km,Usado,$19.800,2024-01-08,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+KNMAT2MTXHP123456,Nissan,Rogue,Turismo,2021,0 km,Nuevo,$26.000,2024-02-14,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+KNMAT2QTXHP123456,Nissan,Rogue,Turismo,2021,0 km,Nuevo,$26.000,2024-02-14,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+19XFB2F50CE123456,Honda,Civic,Turismo,2012,80.000 km,Usado,$11.000,2024-03-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+19XLB2F50CE123456,Honda,Civic,Turismo,2012,80.000 km,Usado,$11.000,2024-03-03,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Oliva
+1GNSCBE01ER123456,Chevrolet,Suburban,Turismo,2014,60.000 km,Usado,$28.500,2024-04-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Púrpura
+1GNSCBW01ER123456,Chevrolet,Suburban,Turismo,2014,60.000 km,Usado,$28.500,2024-04-21,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+YV1MW382682123456,Volvo,S60,Turismo,2018,40.000 km,Usado,$17.900,2024-05-09,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Marrón
+YV3MW382682123456,Volvo,S60,Turismo,2018,40.000 km,Usado,$17.900,2024-05-09,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+5YJSA1H18FFP12345,Tesla,Model S,Turismo,2020,0 km,Nuevo,$75.000,2024-06-18,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+5YJSS1H18FFP12345,Tesla,Model S,Turismo,2020,0 km,Nuevo,$75.000,2024-06-18,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1GNKRFKD6GJ123456,GMC,Acadia,Turismo,2016,45.000 km,Usado,$23.800,2024-07-02,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+1GNKRFKD6JJ123456,GMC,Acadia,Turismo,2016,45.000 km,Usado,$23.800,2024-07-02,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2HKRM4H36EH123456,Honda,CR-V,Turismo,2017,35.000 km,Usado,$21.200,2024-08-15,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+2HKRM4H36LH123456,Honda,CR-V,Turismo,2017,35.000 km,Usado,$21.200,2024-08-15,Reservado,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+1LNHM81W95Y123456,Lincoln,Town Car,Turismo,2005,85.000 km,Usado,$10.500,2024-09-04,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+1LNEM81W95Y123456,Lincoln,Town Car,Turismo,2005,85.000 km,Usado,$10.500,2024-09-04,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Naranja
+1C6RR7GT1DS123456,Ram,1500,Turismo,2013,75.000 km,Usado,$19.000,2024-10-23,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
+1C6RR7GV1DS123456,Ram,1500,Turismo,2013,75.000 km,Usado,$19.000,2024-10-23,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+3C4PDCAB1HT123456,Fiat,500X,Turismo,2017,20.000 km,Usado,$14.500,2024-11-11,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Verde
+3C4PDCAM1HT123456,Fiat,500X,Turismo,2017,20.000 km,Usado,$14.500,2024-11-11,Vendido,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Azul
+JM1GJ1V62F1234567,Mazda,CX-5,Turismo,2015,50.000 km,Usado,$16.700,2024-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Violeta
+JM1GJ1H62F1234567,Mazda,CX-5,Turismo,2015,50.000 km,Usado,$16.700,2024-12-30,Disponible,https://d1cjrn2338s5db.cloudfront.net/gamas/images/25-467-2592-1685547326.png,Rosa
