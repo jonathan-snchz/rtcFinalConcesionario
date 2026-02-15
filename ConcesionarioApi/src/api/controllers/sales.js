@@ -35,7 +35,7 @@ const postSale = async (req, res, next) => {
         const sale = req.body;
         
         const lastSale = await Sale.findOne().sort({ id: -1 });
-        const nextId = await lastSale ? lastSale + 1: 1;
+        const nextId = lastSale ? lastSale.id + 1: 1;
 
         const car = await Car.findById(sale.car);
         if (!car) {
