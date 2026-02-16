@@ -85,6 +85,7 @@
   background: var(--light);
   border-color: var(--secondary);
   color: var(--textColor);
+  cursor: pointer;
 }
 
 .addUserIcon {
@@ -92,7 +93,6 @@
   width: 40px;
   height: 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: var(--white);
   border-radius: 50%;
@@ -202,7 +202,9 @@
   padding: 3rem;
   color: var(--textMuted);
   background: var(--light);
+  border: 2px dashed var(--borderColor);
   border-radius: var(--radius);
+  margin-bottom: 2rem;
 }
 
 /* Loading & Error */

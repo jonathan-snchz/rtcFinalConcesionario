@@ -116,10 +116,6 @@
   min-height: 52px;
 }
 
-.buttonFullWidth {
-  width: 100%;
-}
-
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;

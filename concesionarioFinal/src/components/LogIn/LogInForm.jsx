@@ -48,7 +48,7 @@ const LogInForm = ({ onSubmit, loading }) => {
           <div className="formSection">
             <h3>Credenciales</h3>
             
-            <div className="formRow">
+            <div className="formRow fullWidth">
               <FormInput
                 label="Email"
                 type="email"
@@ -68,7 +68,7 @@ const LogInForm = ({ onSubmit, loading }) => {
               />
             </div>
 
-            <div className="formRow">
+            <div className="formRow fullWidth">
               <FormInput
                 label="Contraseña"
                 type="password"
@@ -96,12 +96,6 @@ const LogInForm = ({ onSubmit, loading }) => {
             submitText={loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             showCancel={false}
           />
-
-          <div className="logInFooter">
-            <p>
-              ¿No tienes una cuenta? <Link to="/register">Regístrate aquí</Link>
-            </p>
-          </div>
         </form>
       </div>
     </div>

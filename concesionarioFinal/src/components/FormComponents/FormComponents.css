@@ -68,10 +68,6 @@
   grid-template-columns: 1fr;
 }
 
-.formGroup.fullWidth {
-  grid-column: 1 / -1;
-}
-
 /* Form section */
 .formSection {
   background: var(--light);

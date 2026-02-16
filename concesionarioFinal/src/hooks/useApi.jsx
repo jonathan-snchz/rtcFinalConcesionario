@@ -10,18 +10,28 @@ const useApi = () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       const token = localStorage.getItem('token');
       const url = `${apiUrl}${endpoint}`;
       
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+      }
+
+      let body = options.body;
+
+      if (body && !(body instanceof FormData)){
+        headers['Content-type'] = 'application/json';
+        body = JSON.stringify(body)
+      }
+
       const response = await fetch(url, {
         ...options,
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          ...headers,
           ...options.headers,
         },
-        body: options.body ? JSON.stringify(options.body) : undefined,
+        body: body,
       });
 
       const responseText = await response.text();

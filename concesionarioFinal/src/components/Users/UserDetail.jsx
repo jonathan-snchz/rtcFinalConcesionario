@@ -125,7 +125,7 @@ const UserDetail = () => {
                 onClick={handleDelete}
                 disabled={loading}
               >
-                {loading ? 'Eliminando...' : 'Sí, Eliminar'}
+                {loading ? 'Eliminando...' : 'Sí, eliminar'}
               </Button>
               <Button 
                 variant="secondary"

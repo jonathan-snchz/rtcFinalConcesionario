@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
 import useSort from '../../hooks/useSort';
 import Alert from '../Alerts/Alert';
 import SearchBar from '../SearchBar/SearchBar';
 import SortControls from '../SortControls/SortControls';
-import { USER_SORT_OPTIONS, formatDate } from '../../utils/data';
+import {   USER_SORT_OPTIONS, USER_SEARCH_FIELDS, formatDate } from '../../utils/data';
 import './Users.css';
 
 const UsersList = () => {
@@ -28,14 +28,19 @@ const UsersList = () => {
     fetchUsers();
   }, [get]);
 
-  const filteredUsers = sortedData.filter(user => 
-    !searchTerm || 
-    user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user._id?.includes(searchTerm)
-  );
-
-  const userSortOptions = USER_SORT_OPTIONS;
+  const filteredUsers = useMemo(() => {
+    if (!searchTerm) return sortedData;
+    
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    
+    return sortedData.filter(user => 
+      USER_SEARCH_FIELDS.some(field => {
+        const value = user[field];
+        if (value === undefined || value === null) return false;
+        return value.toString().toLowerCase().includes(lowerSearchTerm);
+      })
+    );
+  }, [searchTerm, sortedData]);
 
   if (loading && users.length === 0) return <div className="loading">Cargando usuarios...</div>;
   if (error && users.length === 0) return <Alert type="error" message={error} />;
@@ -53,12 +58,18 @@ const UsersList = () => {
         />
         
         <SortControls
-          sortOptions={userSortOptions}
+          sortOptions={USER_SORT_OPTIONS}
           onSort={requestSort}
           getSortIndicator={getSortIndicator}
         />
       </div>
 
+      {filteredUsers.length === 0 && searchTerm && (
+        <div className="noResults">
+          No se encontraron usuarios para "{searchTerm}"
+        </div>
+      )}
+      
       <div className="usersList">
         <Link to="/register" className="addUserItem">
           <div className="addUserIcon">+</div>
@@ -79,12 +90,6 @@ const UsersList = () => {
           </Link>
         ))}
       </div>
-
-      {filteredUsers.length === 0 && searchTerm && (
-        <div className="noResults">
-          No se encontraron usuarios para "{searchTerm}"
-        </div>
-      )}
     </div>
   );
 };

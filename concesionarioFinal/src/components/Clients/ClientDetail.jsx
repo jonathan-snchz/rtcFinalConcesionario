@@ -89,7 +89,7 @@ const ClientDetail = () => {
             onClick={() => setShowDeleteConfirm(true)}
             disabled={loading}
           >
-            {loading ? 'Eliminando...' : 'Sí, Eliminar'}
+            {loading ? 'Eliminando...' : 'Eliminar'}
           </Button>
         </div>
       </div>
@@ -149,7 +149,7 @@ const ClientDetail = () => {
                 onClick={handleDelete}
                 disabled={loading}
               >
-                {loading ? 'Eliminando...' : 'Sí, Eliminar'}
+                {loading ? 'Eliminando...' : 'Sí, eliminar'}
               </Button>
               <Button 
                 variant="secondary"

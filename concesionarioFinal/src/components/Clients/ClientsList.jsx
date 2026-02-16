@@ -5,28 +5,31 @@ import useSort from '../../hooks/useSort';
 import Alert from '../Alerts/Alert';
 import SearchBar from '../SearchBar/SearchBar';
 import SortControls from '../SortControls/SortControls';
-import { CLIENT_SORT_OPTIONS } from '../../utils/data';
+import { CLIENT_SORT_OPTIONS, CLIENT_SEARCH_FIELDS } from '../../utils/data';
+import Modal from '../Modal/Modal';
+import ClientForm from './ClientForm';
 import './Clients.css';
 
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { loading, error, get } = useApi();
+  const [showCreateForm, setShowCreateForm] = useState(false);
   
   const { sortedData, requestSort, getSortIndicator } = useSort(clients, { key: 'name', direction: 'asc' });
 
-  useEffect(() => {
-    const fetchClients = async () => {
-      try {
-        const data = await get('/clients');
-        setClients(data);
-      } catch (error) {
-        console.error('Error fetching clients:', error);
-      }
-    };
+  const fetchClients = async () => {
+    try {
+      const data = await get('/clients');
+      setClients(data);
+    } catch (error) {
+      console.error('Error fetching clients:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchClients();
-  }, [get]);
+  }, []);
 
   const filteredClients = useMemo(() => {
     if (!searchTerm) return sortedData;
@@ -34,14 +37,13 @@ const ClientsList = () => {
     const lowerSearchTerm = searchTerm.toLowerCase();
     
     return sortedData.filter(client => 
-      client.name?.toLowerCase().includes(lowerSearchTerm) ||
-      client.email?.toLowerCase().includes(lowerSearchTerm) ||
-      client.id?.toString().includes(searchTerm) ||
-      client.preferences?.toLowerCase().includes(lowerSearchTerm)
+      CLIENT_SEARCH_FIELDS.some(field => {
+        const value = client[field];
+        if (value === undefined || value === null) return false;
+        return value.toString().toLowerCase().includes(lowerSearchTerm);
+      })
     );
   }, [searchTerm, sortedData]);
-
-  const clientSortOptions = CLIENT_SORT_OPTIONS;
 
   if (loading && clients.length === 0) return <div className="loading">Cargando clientes...</div>;
   if (error && clients.length === 0) return <Alert type="error" message={error} />;
@@ -59,20 +61,42 @@ const ClientsList = () => {
         />
         
         <SortControls
-          sortOptions={clientSortOptions}
+          sortOptions={CLIENT_SORT_OPTIONS}
           onSort={requestSort}
           getSortIndicator={getSortIndicator}
         />
       </div>
 
+      {filteredClients.length === 0 && searchTerm && (
+        <div className="noResults">
+          No se encontraron clientes para "{searchTerm}"
+        </div>
+      )}
+      
       <div className="clientsList">
-        <Link to="/clients/new" className="addClientItem">
+        <div onClick={() => setShowCreateForm(true)} className="addClientItem">
           <div className="addClientIcon">+</div>
           <div>
             <h3>Agregar Nuevo Cliente</h3>
             <p>Click para agregar un nuevo cliente al sistema</p>
           </div>
-        </Link>
+        </div>
+
+        {showCreateForm && (
+          <Modal 
+            title="Agregar nuevo cliente"
+            onClose={() => setShowCreateForm(false)}
+            size="large"
+          >
+            <ClientForm
+              onSuccess={() => {
+                setShowCreateForm(false);
+                fetchClients();
+              }}
+              onCancel={() => setShowCreateForm(false)}
+            />
+          </Modal>
+        )}
 
         {filteredClients.map(client => (
           <Link to={`/clients/${client.id}`} key={client.id} className="clientItem">
@@ -85,12 +109,6 @@ const ClientsList = () => {
           </Link>
         ))}
       </div>
-
-      {filteredClients.length === 0 && searchTerm && (
-        <div className="noResults">
-          No se encontraron clientes para "{searchTerm}"
-        </div>
-      )}
     </div>
   );
 };

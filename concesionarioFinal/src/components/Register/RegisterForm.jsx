@@ -38,7 +38,7 @@ const RegisterForm = ({ onSubmit, serverError, isSubmitting }) => {
           <div className="formSection">
             <h3>Información del Usuario</h3>
             
-            <div className="formRow">
+            <div className="formRow fullWidth">
               <FormInput
                 label="Nombre"
                 type="text"
@@ -58,7 +58,7 @@ const RegisterForm = ({ onSubmit, serverError, isSubmitting }) => {
               />
             </div>
 
-            <div className="formRow">
+            <div className="formRow fullWidth">
               <FormInput
                 label="Email"
                 type="email"
@@ -78,7 +78,7 @@ const RegisterForm = ({ onSubmit, serverError, isSubmitting }) => {
               />
             </div>
 
-            <div className="formRow">
+            <div className="formRow fullWidth">
               <FormInput
                 label="Contraseña"
                 type="password"
@@ -102,7 +102,6 @@ const RegisterForm = ({ onSubmit, serverError, isSubmitting }) => {
           <FormActions
             loading={isSubmitting}
             isEditMode={false}
-            onCancel={null}
             submitText={isSubmitting ? 'Añadiendo...' : 'Registrar'}
             showCancel={false}
           />

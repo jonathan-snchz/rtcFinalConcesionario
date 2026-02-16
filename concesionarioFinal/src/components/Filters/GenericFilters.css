@@ -1,0 +1,87 @@
+.filtersContainer {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--borderColor);
+}
+
+.filtersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filtersHeader h3 {
+  margin: 0;
+  color: var(--dark);
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.rangeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rangeGroup label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--dark);
+}
+
+.rangeInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radioGroup label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--dark);
+}
+
+.radioGroup > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.radioGroup > div > label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.filtersActions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--borderColor);
+  padding-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .filtersGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .radioGroup > div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

@@ -131,6 +131,7 @@
   background: var(--light);
   border-color: var(--secondary);
   color: var(--textColor);
+  cursor: pointer;
 }
 
 .addCarIcon {
@@ -138,13 +139,13 @@
   width: 80px;
   height: 80px;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: var(--white);
   border-radius: 50%;
   border: 2px solid var(--primary);
   color: var(--primary);
   margin-bottom: 1rem;
+  
 }
 
 /* Car Detail */
@@ -289,7 +290,9 @@
   padding: 3rem;
   color: var(--textMuted);
   background: var(--light);
+  border: 2px dashed var(--borderColor);
   border-radius: var(--radius);
+  margin-bottom: 2rem;
 }
 
 /* Loading & Error */
@@ -335,5 +338,12 @@
   
   .carActions {
     width: 100%;
+  }
+}
+@media (max-width: 350px) {
+  .carsContainer,
+  .carDetailContainer,
+  .carFormContainer {
+    padding: 0.5rem;
   }
 }

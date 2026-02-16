@@ -8,7 +8,6 @@ const Button = ({
   disabled = false,
   onClick,
   className = '',
-  fullWidth = false
 }) => {
   const variantClasses = {
     primary: 'buttonPrimary',
@@ -25,7 +24,7 @@ const Button = ({
     large: 'buttonLarge'
   };
 
-  const buttonClass = `button ${variantClasses[variant]} ${sizeClasses[size]} ${fullWidth ? 'buttonFullWidth' : ''} ${className}`.trim();
+  const buttonClass = `button ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
   return (
     <button

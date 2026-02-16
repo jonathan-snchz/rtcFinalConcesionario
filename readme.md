@@ -1,5 +1,4 @@
-# Proyecto API Rest  
-## Concesionario FullStack
+# Concesionario FullStack
 
 Proyecto final para la escuela **RockTheCode**, donde se desarrolla una aplicación **FullStack** destinada a la gestión interna de un concesionario de vehículos.
 
@@ -13,7 +12,7 @@ El proyecto está desarrollado principalmente con **Node.js, Express y MongoDB**
 
 El objetivo del proyecto es aplicar los conocimientos adquiridos durante el curso en un entorno realista, desarrollando una aplicación con entidades relacionadas y una separación clara entre frontend y backend.
 
-La aplicación está orientada a un uso interno, pensada para empleados o administradores de un concesionario que necesiten gestionar inventario, clientes y ventas de forma sencilla y clara.
+La aplicación está orientada a un uso interno, pensada para empleados o administradores de un concesionario que necesiten gestionar inventario, clientes y ventas de forma sencilla y clara. Como la aplicación está pensada para un entorno cerrado solo otro usuario podrá añadir un usuario nuevo, tampoco hay figura de administrador, aún así se necesitará el log in del usuario para poder editar o eliminar.
 
 ---
 
@@ -53,33 +52,33 @@ src/
 ```
 src/
 ├── components/ 
-│ ├── Cars/ # Gestión de vehículos
-│ ├── Clients/ # Gestión de clientes
-│ ├── Sales/ # Gestión de ventas
-│ ├── Users/ # Gestión de usuarios
-│ ├── Alerts/ # Alertas
-│ ├── Buttons/ # Botones 
-│ ├── FormComponents/ # Componentes para construir los formularios
-│ ├── Modal/ # Componente para construir los modales
-│ ├── Header/ # Cabecera de navegación
-│ ├── Footer/ # Pie de página
-│ ├── Home/ # Página de inicio
-│ ├── LogIn/ # Login
-│ ├── Register/ # Registro
-│ ├── NavBar/ # Barra de navegación
-│ ├── NotFound/ # Página 404
-│ ├── SearchBar/ # Búsqueda
-│ ├── SortControls/ # Ordenamiento
-│ └── InfoDisplay/ # Tarjetas de información
-├── context/ # Context API
-│ └── AuthContext.jsx # Gestión de autenticación
+│ ├── Cars/    #Gestión de vehículos
+│ ├── Clients/    #Gestión de clientes
+│ ├── Sales/   #Gestión de ventas
+│ ├── Users/   #Gestión de usuarios
+│ ├── Alerts/  #Alertas
+│ ├── Buttons/    #Botones 
+│ ├── FormComponents/   #Componentes para construir los formularios
+│ ├── Modal/   #Componente para construir los modales
+│ ├── Header/  #Cabecera de navegación
+│ ├── Footer/  #Pie de página
+│ ├── Home/    #Página de inicio
+│ ├── LogIn/   #Login
+│ ├── Register/   #Registro
+│ ├── NavBar/  #Barra de navegación
+│ ├── NotFound/   #Página 404
+│ ├── SearchBar/  #Búsqueda
+│ ├── SortControls/  #Ordenamiento
+│ └── InfoDisplay/   #Tarjetas de información
+├── context/   #Context API
+│ └── AuthContext.jsx   #Gestión de autenticación
 ├── hooks/ 
-│ ├── useApi.js # Comunicación con API
-│ └── useSort.js # Ordenamiento de datos
+│ ├── useApi.js   #Comunicación con API
+│ └── useSort.js  #Ordenamiento de datos
 ├── utils/ 
-│ └── data.js # Normalización de datos
-├── App.jsx # Componente raíz
-└── main.jsx # Punto de entrada
+│ └── data.js  #Normalización de datos
+├── App.jsx    #Componente raíz
+└── main.jsx   #Punto de entrada
 ```
 - Single page aplication desarrollada con React
 - Navegación mediante React Router
@@ -110,7 +109,7 @@ Colecciones principales:
 ## Modelos de Datos
 
 ### User
-
+```
 {
   name: String,
   email: String,
@@ -118,9 +117,9 @@ Colecciones principales:
   createdAt: Date,
   updatedAt: Date
 }
-
+```
 ### Car
-
+```
 {
   vin: String,
   brand: String,
@@ -135,18 +134,18 @@ Colecciones principales:
   color: String,
   img: String
 }
-
+```
 ### Client
-
+```
 {
   id: Number,
   name: String,
   email: String,
   preferences: String
 }
-
+```
 ### Sale
-
+```
 {
   id: Number,
   car: ObjectId,
@@ -155,7 +154,7 @@ Colecciones principales:
   payment: String,
   delivery: Date
 }
-
+```
 ---
 
 ## Rutas de la API
@@ -164,8 +163,8 @@ Colecciones principales:
 
 | Método | Ruta | Uso | Auth |
 |--------|------|-----|------|
-| POST | /users/register | Registrar usuario | No |
 | POST | /users/login | Login de usuario | No |
+| POST | /users/register | Registrar usuario | Sí |
 | GET | /users | Listar usuarios | Sí |
 | GET | /users/:id | Obtener usuario | Sí |
 | DELETE | /users/:id | Eliminar usuario | Sí |
@@ -299,3 +298,6 @@ jose@concesionario.com / jose123
 maria@concesionario.com / maria123  
 
 ---
+## Despliegue
+
+El proyecto se puede encontrar en **https://rtc-final-concesionario.netlify.app/** gracias a **Netlifly** para desplegar el front y a **Render** para desplegar el back.

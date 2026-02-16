@@ -9,8 +9,15 @@ const useSort = (data, defaultSort = { key: '', direction: 'asc' }) => {
     }
 
     return [...data].sort((a, b) => {
-      let valueA = a[sortConfig.key];
-      let valueB = b[sortConfig.key];
+      let valueA, valueB;
+      
+      if (sortConfig.key.includes('.')) {
+        valueA = sortConfig.key.split('.').reduce((obj, key) => obj?.[key], a);
+        valueB = sortConfig.key.split('.').reduce((obj, key) => obj?.[key], b);
+      } else {
+        valueA = a[sortConfig.key];
+        valueB = b[sortConfig.key];
+      }
 
       if (valueA == null) return 1;
       if (valueB == null) return -1;

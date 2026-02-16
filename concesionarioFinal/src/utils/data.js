@@ -95,6 +95,50 @@ export const USER_SORT_OPTIONS = [
   { key: 'createdAt', label: 'Fecha de Creación' }
 ];
 
-// Campos de búsqueda para los vehículos
+// Campos de búsqueda para las listas
 
 export const CAR_SEARCH_FIELDS = ['brand', 'model', 'color', 'vin', 'year'];
+
+export const CLIENT_SEARCH_FIELDS = ['name', 'email', 'id', 'preferences'];
+
+export const SALE_SEARCH_FIELDS = ['id', 'car.brand', 'car.model', 'client.name', 'payment'];
+
+export const USER_SEARCH_FIELDS = ['name', 'email', '_id'];
+
+// Filtros
+
+export const CAR_FILTER_CONFIG = {
+  fields: [
+    { key: 'brand', label: 'Marca', type: 'select' },
+    { key: 'model', label: 'Modelo', type: 'select' },
+    { key: 'year', label: 'Año', type: 'range' },
+    { key: 'price', label: 'Precio', type: 'range' },
+    { key: 'km', label: 'Kilómetros', type: 'range' },
+    { 
+      key: 'condition', 
+      label: 'Condición', 
+      type: 'radio',
+      options: ['todos', ...CAR_CONDITIONS]
+    },
+    { 
+      key: 'availability', 
+      label: 'Disponibilidad', 
+      type: 'radio',
+      options: ['todos', ...CAR_AVAILABILITY]
+    }
+  ]
+};
+
+export const SALE_FILTER_CONFIG = {
+  fields: [
+    { key: 'id', label: 'ID Venta', type: 'range' },
+    { key: 'date', label: 'Fecha de Venta', type: 'range' },
+    { key: 'delivery', label: 'Fecha de Entrega', type: 'range' },
+    { 
+      key: 'payment', 
+      label: 'Método de Pago', 
+      type: 'radio',
+      options: ['todos', ...PAYMENT_METHODS]
+    }
+  ]
+};

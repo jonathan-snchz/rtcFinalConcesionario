@@ -57,7 +57,7 @@ const PasswordModal = ({
         <div className="formSection">
           <h3>Credenciales</h3>
           
-          <div className="formRow">
+          <div className="formRow fullWidth">
             <FormInput
               label="Contraseña Actual"
               type="password"
@@ -77,7 +77,7 @@ const PasswordModal = ({
             />
           </div>
 
-          <div className="formRow">
+          <div className="formRow fullWidth">
             <FormInput
               label="Nueva Contraseña"
               type="password"
@@ -97,7 +97,7 @@ const PasswordModal = ({
             />
           </div>
 
-          <div className="formRow">
+          <div className="formRow fullWidth">
             <FormInput
               label="Confirmar Nueva Contraseña"
               type="password"

@@ -17,7 +17,6 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
   const { loading, error: serverError, get, post, put } = useApi();
   const [cars, setCars] = useState([]);
   const [clients, setClients] = useState([]);
-  const [nextId, setNextId] = useState(null);
   const [isFromCarDetail, setIsFromCarDetail] = useState(false);
   const [selectedCarId, setSelectedCarId] = useState('');
   const [formError, setFormError] = useState('');
@@ -37,8 +36,11 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
     formState: { errors },
     setValue,
   } = useForm({
-    defaultValues: sale || {
-      id: '',
+    defaultValues: sale ? {
+      ...sale,
+      date: formatDateForInput(sale.date),
+      delivery: formatDateForInput(sale.delivery)
+    } : {
       car: '',
       client: '',
       date: formatDateForInput(new Date()),
@@ -51,14 +53,6 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!isEditMode) {
-          const salesData = await get('/sales');
-          const maxId = salesData.length > 0 
-            ? Math.max(...salesData.map(s => s.id))
-            : 0;
-          setNextId(maxId + 1);
-        }
-
         const carsData = await get('/cars');
         const availableCars = isEditMode 
           ? carsData 
@@ -90,12 +84,6 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
     }
   }, [carFromState, cars, setValue]);
 
-  useEffect(() => {
-    if (!isEditMode && nextId) {
-      setValue('id', nextId);
-    }
-  }, [nextId, isEditMode, setValue]);
-
   const onSubmit = async (formData) => {
     try {
       setFormError('');
@@ -125,9 +113,11 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
     }
   };
 
-  const carOptions = cars.map(car => ({
-    value: car._id,
-    label: `${formatText(car.brand)} ${car.model} (${car.year}) - ${car.vin}`
+  const carOptions = cars
+    .filter(car => car.availability !== 'vendido')
+    .map(car => ({
+      value: car._id,
+      label: `${formatText(car.brand)} ${car.model} (${car.year}) - ${car.vin}`
   }));
 
   const clientOptions = clients.map(client => ({
@@ -167,20 +157,6 @@ const SaleForm = ({ sale, onSuccess, onCancel }) => {
           )}
 
           <div className="formRow">
-            <FormInput
-              label="ID Venta"
-              type="number"
-              register={register}
-              name="id"
-              errors={errors}
-              placeholder="Auto-generado"
-              required={true}
-              readOnly={true}
-              disabled={loading}
-              rules={{
-                required: 'El ID es obligatorio',
-              }}
-            />
 
             {!isFromCarDetail && (
               <FormSelect

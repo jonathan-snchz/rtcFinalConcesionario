@@ -24,7 +24,7 @@ const SearchBar = ({
           size="small"
           className="clearSearch"
         >
-          Clear
+          Limpiar
         </Button>
       )}
     </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
@@ -11,51 +11,21 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
   const navigate = useNavigate();
   const isEditMode = !!client;
   
-  const { loading, error: serverError, get, post, put } = useApi();
-  const [nextId, setNextId] = useState(null);
+  const { loading, error: serverError, post, put } = useApi();
   const [formError, setFormError] = useState('');
-
-  useEffect(() => {    
-    const fetchNextId = async () => {
-      if (!isEditMode) {
-        try {
-          const clients = await get('/clients');
-          const maxId = clients.length > 0 
-            ? Math.max(...clients.map(c => c.id))
-            : 0;
-          setNextId(maxId + 1);
-          setFormError('');
-        } catch (error) {
-          console.error('Error fetching next ID:', error);
-          setNextId(1);
-          setFormError('Error al generar ID');
-        }
-      }
-    };
-
-    fetchNextId();
-  }, [isEditMode, get]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm({
     defaultValues: client || {
-      id: 1,
       name: '',
       email: '',
       preferences: '',
     },
     mode: 'onBlur',
   });
-
-  useEffect(() => {
-    if (!isEditMode && nextId) {
-      setValue('id', nextId);
-    }
-  }, [nextId, isEditMode, setValue]);
 
   const onSubmit = async (formData) => {
     try {
@@ -95,21 +65,6 @@ const ClientForm = ({ client, onSuccess, onCancel }) => {
           <h3>Información del Cliente</h3>
           
           <div className="formRow">
-            <FormInput
-              label="ID Cliente"
-              type="number"
-              register={register}
-              name="id"
-              errors={errors}
-              placeholder="Auto-generado"
-              required={true}
-              readOnly={true}
-              disabled={loading}
-              rules={{
-                required: 'El ID es obligatorio',
-                min: { value: 1, message: 'El ID debe ser mayor que 0' }
-              }}
-            />
 
             <FormInput
               label="Nombre"

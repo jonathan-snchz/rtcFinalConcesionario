@@ -3,29 +3,29 @@
   
   /*  Colores base  */
   --primary: #b124ca;
-  --primary-dark: #7b0a66fc;
+  --primary-dark: #8a3299;
   --secondary: #7d6c7a;
   --secondary-dark: #625461;
-  --success: #20ad41;
-  --success-dark: #256b36;
-  --success-light: #c4eacc;
-  --danger: #d92235;
-  --danger-dark: #9a1b28;
-  --danger-light: #dfacb0;
-  --warning: #ffaa00;
-  --warning-dark: #ca8403;
-  --warning-light: #ecc995;
+  --success: #4CB963;
+  --success-dark: #3c924e;
+  --success-light: #5dea7b;
+  --danger: #dc543f;
+  --danger-dark: #b64432;
+  --danger-light: #f78e7e;
+  --warning: #ffa200;
+  --warning-dark: #ce6f0a;
+  --warning-light: #edbf76;
   
   /* Textos/Fondos */
-  --light: #d1c8d0;
-  --dark: #403742;
-  --white: #cccbcc;
+  --light: #ded5eb;
+  --dark: #271f34;
+  --white: #e4deeb;
   --black: #141517;
   
   /* Bordes y ajustes */
-  --borderColor: #cdbccd;
+  --borderColor: #c2c8da;
   --textColor: var(--black);
-  --textMuted: #7a6c7d;
+  --textMuted: #51545b;
   --shadow: rgba(0, 0, 0, 0.1);
   
   /* Espaciados y transiciones */
@@ -81,4 +81,16 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .mainContent{
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .mainContent{
+    padding: 0.5rem;
+  }
 }

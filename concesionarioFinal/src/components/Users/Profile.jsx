@@ -179,7 +179,7 @@ const Profile = () => {
                 onClick={handleDeleteAccount}
                 disabled={loading}
               >
-                {loading ? 'Eliminando...' : 'Sí, Eliminar Mi Cuenta'}
+                {loading ? 'Eliminando...' : 'Sí, eliminar mi cuenta'}
               </Button>
               <Button 
                 variant="secondary"

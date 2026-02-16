@@ -11,8 +11,8 @@ const Home = () => {
         <h1>Concesionario</h1>
         <p className="homeSubtitle">
           {isAuthenticated 
-            ? `Bienvenido, ${user?.name || 'User'}!`
-            : 'Recuerda iniciar sesión!'
+            ? `¡Bienvenido, ${user?.name || 'User'}!`
+            : '¡Recuerda iniciar sesión!'
           }
         </p>
       </div>
@@ -27,20 +27,20 @@ const Home = () => {
           
           <div className="dashboardCard">
             <h3>Clientes</h3>
-            <p>Encuentra al próximo comprador!</p>
-            <Link to="/clients" className="dashboardLink">View Clients →</Link>
+            <p>¡Encuentra al próximo comprador!</p>
+            <Link to="/clients" className="dashboardLink">Ver clientes →</Link>
           </div>
           
           <div className="dashboardCard">
             <h3>Ventas</h3>
             <p>Registra tu nueva venta o gestiona antiguas operaciones.</p>
-            <Link to="/sales" className="dashboardLink">View Sales →</Link>
+            <Link to="/sales" className="dashboardLink">Ver ventas →</Link>
           </div>
           
           <div className="dashboardCard">
             <h3>Usuarios</h3>
-            <p>Necesitas añadir un nuevo usuario?</p>
-            <Link to="/users" className="dashboardLink">View Users →</Link>
+            <p>¿Necesitas añadir un nuevo usuario?</p>
+            <Link to="/users" className="dashboardLink">Ver usuarios →</Link>
           </div>
           
           <div className="dashboardCard">
@@ -57,8 +57,8 @@ const Home = () => {
       ) : (
         <div className="loginPrompt">
           <div className="loginCard">
-            <h3>Login Required</h3>
-            <p>Por favor inicia sesión para validar tu identidad!</p>
+            <h3>No se ha iniciado sesión</h3>
+            <p>Por favor inicia sesión para validar tu identidad</p>
             <div className="loginActions">
               <Link to="/login" className="loginButton">
                 Login
