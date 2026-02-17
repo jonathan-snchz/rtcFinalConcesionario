@@ -44,7 +44,7 @@ const carsSchema = mongoose.Schema({
         type: Number, 
         required: true,
     },
-    buyedWhen: {
+    boughtWhen: {
         type: Date, 
         required: true,
     },

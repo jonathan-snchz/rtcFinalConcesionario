@@ -19,7 +19,7 @@ const cleanCar = (row) => {
         condition: row['Estado'].toLowerCase(),
         km: parseInt(row['Kilometraje'].replace(' km', '').replace(/\./g, '')),
         price: parseInt(row['Precio de venta'].replace('$', '').replace(/\./g, '')),
-        buyedWhen: new Date(row['Fecha de adquisición']),
+        boughtWhen: new Date(row['Fecha de adquisición']),
         availability: row['Estado del vehículo'].toLowerCase().trim(),
         img: row['Imagen'].trim(),
         color: row['Color'].trim()  

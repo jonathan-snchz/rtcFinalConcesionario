@@ -30,7 +30,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
   } = useForm({
     defaultValues: car ? {
       ...car,
-      buyedWhen: formatDateForInput(car.buyedWhen)
+      boughtWhen: formatDateForInput(car.boughtWhen)
     } : {
       vin: '',
       brand: '',
@@ -40,7 +40,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
       condition: 'usado',
       km: 0,
       price: 0,
-      buyedWhen: formatDateForInput(new Date()),
+      boughtWhen: formatDateForInput(new Date()),
       availability: 'disponible',
       color: '',
     },
@@ -92,7 +92,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
       
       const fieldsToSend = [
         'vin', 'brand', 'model', 'type', 'year', 'condition',
-        'km', 'price', 'buyedWhen', 'availability', 'color'
+        'km', 'price', 'boughtWhen', 'availability', 'color'
       ];
       
       fieldsToSend.forEach(field => {
@@ -253,7 +253,7 @@ const CarForm = ({ car, onSuccess, onCancel }) => {
               label="Fecha de Compra"
               type="date"
               register={register}
-              name="buyedWhen"
+              name="boughtWhen"
               errors={errors}
               required={true}
               disabled={loading}

@@ -129,7 +129,7 @@ Colecciones principales:
   condition: String,
   km: Number,
   price: Number,
-  buyedWhen: Date,
+  boughtWhen: Date,
   availability: String,
   color: String,
   img: String

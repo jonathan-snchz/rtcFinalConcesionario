@@ -127,7 +127,7 @@ const CarDetail = () => {
             </InfoItem>
             <InfoItem label="Color" value={car.color || 'N/A'} />
             <InfoItem label="Comprado">
-                {formatDate(car.buyedWhen)}
+                {formatDate(car.boughtWhen)}
             </InfoItem>
             <InfoItem label="Estado">
                 <span className={`availabilityTag availability-${car.availability}`}>

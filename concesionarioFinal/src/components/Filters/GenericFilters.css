@@ -13,13 +13,12 @@
 }
 
 .filtersHeader h3 {
-  margin: 0;
   color: var(--dark);
 }
 
 .filtersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin: 1.5rem 0;
 }
@@ -32,7 +31,6 @@
 
 .rangeGroup label {
   font-weight: bold;
-  font-size: 0.9rem;
   color: var(--dark);
 }
 
@@ -50,7 +48,6 @@
 
 .radioGroup label {
   font-weight: bold;
-  font-size: 0.9rem;
   color: var(--dark);
 }
 
@@ -75,7 +72,7 @@
   padding-top: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .filtersGrid {
     grid-template-columns: 1fr;
   }
